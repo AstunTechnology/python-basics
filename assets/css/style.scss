@@ -1,0 +1,22 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+}
+
+header {
+    width: 200px;
+}
+
+header li {
+    width: inherit;
+    float: none;
+    border-right: 0;
+    height: inherit;
+}
+
+section {
+    width: 580px;
+}
