@@ -15,8 +15,6 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="{{ site.github.url }}"> <h1>{{ site.title | default: site.github.repository_name }}</h1> </a>
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
           <ol>
             <li><a href="./introduction">Introduction</a></li>
             <li><a href="./strings">Strings</a></li>
@@ -42,10 +40,8 @@
 
       </section>
       <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p><small>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.
+        Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
@@ -62,5 +58,15 @@
         ga('send', 'pageview');
     </script>
   {% endif %}
+    <script>
+        // Try and highlight the current link in the menu
+        var links = document.querySelectorAll("header a");
+        for (var i = 0, link; i < links.length; i++) {
+            link = links[i];
+            if (link.href === window.location.href) {
+                link.classList.add('current');
+            }
+        }
+    </script>
   </body>
 </html>

@@ -3,12 +3,12 @@ Copy Special Python Exercise
 
 The Copy Special exercise goes with the file-system and external
 commands material in the [Python
-Utilities](utilities.md) section.
+Utilities](utilities) section.
 This exercise is in the "copyspecial" directory within
 google-python-exercises (download
 [google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already, see [Set
-Up](set-up.md) for details). Add
+Up](set-up) for details). Add
 your code in copyspecial.py.
 
 The copyspecial.py program takes one or more directories as its

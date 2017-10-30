@@ -196,7 +196,7 @@ Exercise: list1.py
 
 To practice the material in this section, try later problems in
 **list1.py** that use sorting and tuples (in the [Basic
-Exercises](basic.md)).
+Exercises](basic)).
 
 ----
 

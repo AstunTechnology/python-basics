@@ -234,7 +234,7 @@ Exercise: wordcount.py
 
 Combining all the basic Python material -- strings, lists, dicts,
 tuples, files -- try the summary **wordcount.py** exercise in the [Basic
-Exercises](basic.md).
+Exercises](basic).
 
 ----
 

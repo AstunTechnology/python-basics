@@ -3,12 +3,12 @@ Log Puzzle Python Exercise
 
 For the Log Puzzle exercise, you'll use Python code to solve two
 puzzles. This exercise uses the urllib module, as shown in the [Python
-Utilities](utilities.md) section.
+Utilities](utilities) section.
 The files for this exercise are in the "logpuzzle" directory inside
 google-python-exercises (download the
 [google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already, see [Set
-Up](set-up.md) for details). Add
+Up](set-up) for details). Add
 your code to the "logpuzzle.py" file.
 
 An image of an animal has been broken it into many narrow vertical

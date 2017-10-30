@@ -388,7 +388,7 @@ print re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str)
 Exercise
 --------
 
-To practice regular expressions, see the [Baby Names Exercise](baby-names.md).
+To practice regular expressions, see the [Baby Names Exercise](baby-names).
 
 ----
 

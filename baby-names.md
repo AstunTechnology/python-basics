@@ -9,7 +9,7 @@ The files for this exercise are in the "babynames" directory inside
 google-python-exercises (download the
 [google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already, see [Set
-Up](set-up.md) for details). Add
+Up](set-up) for details). Add
 your code in babynames.py. The files baby1990.html baby1992.html ...
 contain raw html, similar to what you get visiting the above social
 security site. Take a look at the html and think about how you might

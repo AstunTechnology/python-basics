@@ -25,3 +25,8 @@ a:hover, a:focus {
     color: #0000FF;
     font-weight: normal;
 }
+
+header a.current {
+    font-weight: bold;
+    color: #000;
+}

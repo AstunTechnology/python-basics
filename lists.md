@@ -186,7 +186,7 @@ Exercise: list1.py
 
 To practice the material in this section, try the problems in
 **list1.py** that do not use sorting (in the [Basic
-Exercises](basic.md)).
+Exercises](basic)).
 
 ----
 

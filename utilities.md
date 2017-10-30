@@ -193,9 +193,9 @@ Exercise
 
 To practice the file system and external-commands material, see the
 [Copy Special
-Exercise](copy-special.md).
+Exercise](copy-special).
 To practice the urllib2 material, see the [Log Puzzle
-Exercise](log-puzzle.md).
+Exercise](log-puzzle).
 
 ----
 

@@ -301,7 +301,7 @@ Exercise: string1.py
 
 To practice the material in this section, try the **string1.py**
 exercise in the [Basic
-Exercises](basic.md).
+Exercises](basic).
 
 ----
 
