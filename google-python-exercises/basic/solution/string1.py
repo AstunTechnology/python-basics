@@ -119,7 +119,6 @@ def main():
     test(both_ends('a'), '')
     test(both_ends('xyz'), 'xyyz')
 
-    
     print
     print 'fix_start'
     test(fix_start('babble'), 'ba**le')
