@@ -6,7 +6,7 @@ puzzles. This exercise uses the urllib module, as shown in the [Python
 Utilities](utilities.md) section.
 The files for this exercise are in the "logpuzzle" directory inside
 google-python-exercises (download the
-[google-python-exercises.zip](google-python-exercises.zip)
+[google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already, see [Set
 Up](set-up.md) for details). Add
 your code to the "logpuzzle.py" file.

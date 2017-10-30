@@ -19,7 +19,7 @@ Download Google Python Exercises
 --------------------------------
 
 As a first step, download the
-[google-python-exercises.zip](google-python-exercises.zip)
+[google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 file and unzip it someplace where you can work on it. The resulting
 google-python-exercises directory contains many different python code
 exercises you can work on. In particular, google-python-exercises

@@ -4,7 +4,7 @@ Basic Python Exercises
 There are 3 exercises that go with the first sections of Google's Python
 class. They are located in the "basic" directory within the
 google-python-exercises directory. Download the
-[google-python-exercises.zip](google-python-exercises.zip)
+[google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already (see the
 [Set-Up](set-up.md) page for
 details).

@@ -6,7 +6,7 @@ commands material in the [Python
 Utilities](utilities.md) section.
 This exercise is in the "copyspecial" directory within
 google-python-exercises (download
-[google-python-exercises.zip](google-python-exercises.zip)
+[google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already, see [Set
 Up](set-up.md) for details). Add
 your code in copyspecial.py.

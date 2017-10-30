@@ -7,7 +7,7 @@ security baby names](http://www.socialsecurity.gov/OACT/babynames/)).
 
 The files for this exercise are in the "babynames" directory inside
 google-python-exercises (download the
-[google-python-exercises.zip](google-python-exercises.zip)
+[google-python-exercises.zip](https://github.com/AstunTechnology/python-basics-exercises/archive/master.zip)
 if you have not already, see [Set
 Up](set-up.md) for details). Add
 your code in babynames.py. The files baby1990.html baby1992.html ...
