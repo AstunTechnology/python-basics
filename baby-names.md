@@ -99,9 +99,9 @@ time with shell commands, like this:
     $ grep 'Miguel ' *.summary
     $ grep 'Emily ' *.summary
 
-Regular expression hints -- year: r'Popularity\\sin\\s(\\d\\d\\d\\d)'
-names:
-r'&lt;td&gt;(\\d+)&lt;/td&gt;&lt;td&gt;(\\w+)&lt;/td&gt;\\&lt;td&gt;(\\w+)&lt;/td&gt;'
+Regular expression hints --  
+year: `r'Popularity\sin\s(\d\d\d\d)'`  
+names: `r'<td>(\d+)</td><td>(\w+)</td>\<td>(\w+)</td>'`
 
 ----
 

@@ -31,27 +31,26 @@ $ python        ## Run the Python interpreter
 Python 2.7.9 (default, Dec 30 2014, 03:41:42) 
 [GCC 4.1.2 20080704 (Red Hat 4.1.2-55)] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
->>> a = 6       ## set a variable in this interpreter session
->>> a           ## entering an expression prints its value
+>>> a = 6
+>>> a
 6
 >>> a + 2
 8
->>> a = 'hi'    ## 'a' can hold a string just as well
+>>> a = 'hi'
 >>> a
 'hi'
->>> len(a)      ## call the len() function on a string
+>>> len(a)
 2
 >>> a + len(a)  ## try something that doesn't work
 Traceback (most recent call last):
   File "", line 1, in 
 TypeError: cannot concatenate 'str' and 'int' objects
->>> a + str(len(a))  ## probably what you really wanted
+>>> a + str(len(a))
 'hi2'
 >>> foo         ## try something else that doesn't work
 Traceback (most recent call last):
   File "", line 1, in 
 NameError: name 'foo' is not defined
->>> ^D          ## type CTRL-d to exit (CTRL-z in Windows/DOS terminal)
 ```
 
 As you can see above, it's easy to experiment with variables and
@@ -74,59 +73,6 @@ to execute the code in `hello.py`, passing it the command line argument
 page](http://docs.python.org/using/cmdline) on all the different options
 you have when running Python from the command-line.
 
-Here's a very simple `hello.py` program (notice that blocks of code are
-delimited strictly using indentation rather than curly braces — more on
-this later!):
-
-```python
-#!/usr/bin/env python
-
-# import modules used here -- sys is a very standard one
-import sys
-
-# Gather our code in a main() function
-def main():
-    print 'Hello there', sys.argv[1]
-    # Command line args are in sys.argv[1], sys.argv[2] ...
-    # sys.argv[0] is the script name itself and can be ignored
-
-# Standard boilerplate to call the main() function to begin
-# the program.
-if __name__ == '__main__':
-    main()
-```
-
-Running this program from the command line looks like:
-
-    $ python hello.py Guido
-    Hello there Guido
-    $ ./hello.py Alice  ## without needing 'python' first (Unix)
-    Hello there Alice
-
-Imports, Command-line arguments, and `len()`
---------------------------------------------
-
-The outermost statements in a Python file, or "module", do its one-time
-setup — those statements run from top to bottom the first time the
-module is imported somewhere, setting up its variables and functions. A
-Python module can be run directly — as above "python hello.py Bob" — or
-it can be imported and used by some other module. When a Python file is
-run directly, the special variable "\_\_name\_\_" is set to
-"\_\_main\_\_". Therefore, it's common to have the boilerplate
-`if __name__ ==...` shown above to call a main() function when the
-module is run directly, but not when the module is imported by some
-other module.
-
-In a standard Python program, the list `sys.argv` contains the
-command-line arguments in the standard way with sys.argv\[0\] being the
-program itself, sys.argv\[1\] the first argument, and so on. If you know
-about `argc`, or the number of arguments, you can simply request this
-value from Python with `len(sys.argv)`, just like we did in the
-interactive interpreter code above when requesting the length of a
-string. In general, `len()` can tell you how long a string is, the
-number of elements in lists and tuples (another array-like data
-structure), and the number of key-value pairs in a dictionary.
-
 User-defined Functions
 ----------------------
 
@@ -135,11 +81,6 @@ Functions in Python are defined like this:
 ```python
 # Defines a "repeat" function that takes 2 arguments.
 def repeat(s, exclaim):
-    """
-    Returns the string 's' repeated 3 times.
-    If exclaim is true, add exclamation marks.
-    """
-
     result = s + s + s # can also use "s * 3" which is faster (Why?)
     if exclaim:
         result = result + '!!!'
@@ -172,14 +113,12 @@ Here is code that calls the above repeat() function, printing what it
 returns:
 
 ```python
-def main():
-    print repeat('Yay', False)      ## YayYayYay
-    print repeat('Woo Hoo', True)   ## Woo HooWoo HooWoo Hoo!!!
+print repeat('Yay', False)
+print repeat('Woo Hoo', True)
 ```
 
 At run time, functions must be defined by the execution of a "def"
-before they are called. It's typical to def a main() function towards
-the bottom of the file with the functions it calls above it.
+before they are called.
 
 Indentation
 -----------
@@ -200,26 +139,23 @@ spaces instead of TABs for Python code.
 A common question beginners ask is, "How many spaces should I indent?"
 According to [the official Python style guide (PEP
 8)](http://python.org/dev/peps/pep-0008/#indentation), you should indent
-with 4 spaces. (Fun fact: Google's internal style guideline dictates
-indenting by 2 spaces!)
+with 4 spaces.
 
 Code Checked at Runtime
 -----------------------
 
 Python does very little checking at compile time, deferring almost all
-type, name, etc. checks on each line until that line runs. Suppose the
-above main() calls repeat() like this:
+type, name, etc. checks on each line until that line runs.
 
 ```python
-def main():
-    if name == 'Guido':
-        print repeeeet(name) + '!!!'
-    else:
-        print repeat(name)
+if name == 'Guido':
+    print repeeeet(name) + '!!!'
+else:
+    print repeat(name)
 ```
 
-The if-statement contains an obvious error, where the repeat() function
-is accidentally typed in as repeeeet(). The funny thing in Python ...
+The if-statement contains an obvious error, where the `repeat()` function
+is accidentally typed in as `repeeeet()`. The funny thing in Python ...
 this code compiles and runs fine so long as the name at runtime is not
 'Guido'. Only when a run actually tries to execute the repeeeet() will
 it notice that there is no such function and raise an error. This just
@@ -259,29 +195,19 @@ inadvertent use by new Python developers.
 More on Modules and their Namespaces
 ------------------------------------
 
-Suppose you've got a module "binky.py" which contains a "def foo()". The
-fully qualified name of that foo function is "binky.foo". In this way,
-various Python modules can name their functions and variables whatever
-they want, and the variable names won't conflict — module1.foo is
-different from module2.foo. In the Python vocabulary, we'd say that
-binky, module1, and module2 each have their own "namespaces," which as
-you can guess are variable name-to-object bindings.
-
-For example, we have the standard "sys" module that contains some
-standard system facilities, like the argv list, and exit() function.
-With the statement "import sys" you can then access the definitions in
-the sys module and make them available by their fully-qualified name,
+With the statement `import sys` you can then access the definitions in
+the `sys` module and make them available by their fully-qualified name,
 e.g. sys.exit(). (Yes, 'sys' has a namespace too!)
 
 ```python
-  import sys
+import sys
 
-  # Now can refer to sys.xxx facilities
-  sys.exit(0)
+# Now can refer to sys.xxx facilities
+sys.version
 ```
 
 There is another import form that looks like this: "from sys import
-argv, exit". That makes argv and exit() available by their short names;
+version". That makes version available as `version` without the module prefix;
 however, we recommend the original form with the fully-qualified names
 because it's a lot easier to determine where a function or attribute
 came from.
@@ -291,14 +217,14 @@ installation of the Python interpreter, so you don't have to do anything
 extra to use them. These are collectively known as the "Python Standard
 Library." Commonly used modules/packages include:
 
--   sys — access to exit(), argv, stdin, stdout, ...
--   re — regular expressions
--   os — operating system interface, file system
+-   `sys` — access to `version`, `exit()`, `argv`, `stdin`, `stdout`, ...
+-   `re` — regular expressions
+-   `os` — operating system interface, file system
 
 You can find the documentation of all the Standard Library modules and
-packages at <http://docs.python.org/library>.
+packages at <https://docs.python.org/2.7/library/>.
 
-Online help, `help()`, and `dir()`
+Online help, help(), and dir()
 ----------------------------------
 
 There are a variety of ways to get help for Python.
