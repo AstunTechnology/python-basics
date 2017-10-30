@@ -13,16 +13,19 @@ details).
 the material in the [Python
 Strings](strings.md) section
 (additional exercises available in string2.py)
+
 **list1.py** -- complete the list functions in list1.py, based on the
 material in the [Python
 Lists](lists.md) and [Python
 Sorting](sorting.md) sections
 (additional exercises available in list2.py)
+
 **wordcount.py** -- this larger, summary exercise in wordcount.py
 combines all the basic Python material in the above sections plus
 [Python Dicts and
 Files](dict-files.md) (a second
 exercise is available in mimic.py)
+
 With all the exercises, you can take a look at our solution code inside
 the solution subdirectory.
 
