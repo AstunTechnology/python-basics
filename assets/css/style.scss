@@ -30,3 +30,11 @@ header a.current {
     font-weight: bold;
     color: #000;
 }
+
+@media print, screen and (max-width: 960px) {
+
+section {
+    width: 100%;
+}
+
+}
