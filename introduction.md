@@ -94,8 +94,8 @@ user-friendly, but \* also works because it's Python's "repeat"
 operator, meaning that `'-' * 10` gives `'----------'`, a neat way to
 create an onscreen "line." In the code comment, we hinted that \* works
 faster than +, the reason being that \* calculates the size of the
-resulting object once whereas with +, that calculation is made each time
-+ is called. Both + and \* are called "overloaded" operators because
+resulting object once whereas with +, that calculation is made each time `+`
+is called. Both + and \* are called "overloaded" operators because
 they mean different things for numbers vs. for strings (and other data
 types).
 
