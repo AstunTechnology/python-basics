@@ -59,9 +59,8 @@ appears in a list (or other collection) -- `value in collection` --
 tests if the value is in the collection, returning True/False.
 
 ```python
-list = ['larry', 'curly', 'moe']
-if 'curly' in list:
-    print 'yay'
+l = ['larry', 'curly', 'moe']
+'curly' in l    ## True
 ```
 
 The for/in constructs are very commonly used in Python code and work on
@@ -135,27 +134,27 @@ Notice that these are \*methods\* on a list object, while `len()` is a
 function that takes the list (or string or whatever) as an argument.
 
 ```python
-list = ['larry', 'curly', 'moe']
-list.append('shemp')         ## append elem at end
-list.insert(0, 'xxx')        ## insert elem at index 0
-list.extend(['yyy', 'zzz'])  ## add list of elems at end
-print list  ## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']
-print list.index('curly')    ## 2
+l = ['larry', 'curly', 'moe']
+l.append('shemp')         ## append elem at end
+l.insert(0, 'xxx')        ## insert elem at index 0
+l.extend(['yyy', 'zzz'])  ## add list of elems at end
+print l  ## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']
+print l.index('curly')    ## 2
 
-list.remove('curly')         ## search and remove that element
-list.pop(1)                  ## removes and returns 'larry'
-print list  ## ['xxx', 'moe', 'shemp', 'yyy', 'zzz']
+l.remove('curly')         ## search and remove that element
+l.pop(1)                  ## removes and returns 'larry'
+print l  ## ['xxx', 'moe', 'shemp', 'yyy', 'zzz']
 ```
 
 Common error: note that the above methods do not \*return\* the modified
 list, they just modify the original list.
 
 ```python
-list = [1, 2, 3]
-print list.append(4)   ## NO, does not work, append() returns None
+l = [1, 2, 3]
+print l.append(4)   ## NO, does not work, append() returns None
 ## Correct pattern:
-list.append(4)
-print list  ## [1, 2, 3, 4]
+l.append(4)
+print l  ## [1, 2, 3, 4]
 ```
 
 ### List Build Up
@@ -164,9 +163,9 @@ One common pattern is to start a list a the empty list `[]`, then use
 append() or extend() to add elements to it:
 
 ```python
-list = []          ## Start as the empty list
-list.append('a')   ## Use append() to add elements
-list.append('b')
+l = []          ## Start as the empty list
+l.append('a')   ## Use append() to add elements
+l.append('b')
 ```
 
 ### List Slices
@@ -175,10 +174,10 @@ Slices work on lists just as with strings, and can also be used to
 change sub-parts of the list.
 
 ```python
-list = ['a', 'b', 'c', 'd']
-print list[1:-1]   ## ['b', 'c']
-list[0:2] = 'z'    ## replace ['a', 'b'] with ['z']
-print list         ## ['z', 'c', 'd']
+l = ['a', 'b', 'c', 'd']
+print l[1:-1]   ## ['b', 'c']
+l[0:2] = 'z'    ## replace ['a', 'b'] with ['z']
+print l         ## ['z', 'c', 'd']
 ```
 
 Exercise: list1.py
