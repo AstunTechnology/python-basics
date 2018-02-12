@@ -390,6 +390,11 @@ Exercise
 
 To practice regular expressions, see the [Baby Names Exercise](baby-names).
 
+Also see
+--------
+
+Python regular expression editor: https://pythex.org/
+
 ----
 
 Except as otherwise noted, the content of this page is licensed under
