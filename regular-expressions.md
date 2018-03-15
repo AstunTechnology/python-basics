@@ -393,7 +393,7 @@ To practice regular expressions, see the [Baby Names Exercise](baby-names).
 Also see
 --------
 
-Python regular expression editor: https://pythex.org/
+[Python regular expression editor](https://pythex.org/).
 
 ----
 
