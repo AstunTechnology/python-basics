@@ -156,7 +156,7 @@ def wget(url):
     text = f.read()
     print text
 
-wget('https://httpbin.org/ip')
+wget('http://httpbin.org/ip')
 ```
 
 The above code works fine, but does not include error handling if a url
@@ -182,10 +182,10 @@ def wget2(url):
         print e.read()
 
 # Success
-wget2('https://httpbin.org/ip')
+wget2('http://httpbin.org/ip')
 
 # Fails due to HTTP 418 (teapot)
-wget2('https://httpbin.org/status/418')
+wget2('http://httpbin.org/status/418')
 ```
 
 Exercise
