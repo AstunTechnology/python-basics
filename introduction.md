@@ -151,7 +151,7 @@ type, name, etc. checks on each line until that line runs.
 if name == 'Guido':
     print repeeeet(name) + '!!!'
 else:
-    print repeat(name)
+    print repeat(name, False)
 ```
 
 The if-statement contains an obvious error, where the `repeat()` function
