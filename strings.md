@@ -26,7 +26,7 @@ the end of each line to escape the newline.  String literals inside triple
 quotes, `"""` or `'''`, can span multiple lines of text.
 
 Python strings are "immutable" which means they cannot be changed after they
-are created. Since strings can't be changed, we construct \*new\* strings as we
+are created. Since strings can't be changed, we construct **new** strings as we
 go to represent computed values. So for example the expression `'hello' +
 'there'` takes in the 2 strings 'hello' and 'there' and builds a new string
 `'hellothere'`.
