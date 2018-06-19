@@ -152,7 +152,7 @@ file into the variable `f`, ready for reading operations, and use `f.close()`
 when finished. The `'r'` stands for the read "mode", instead of `'r'`, use
 `'w'` for writing, and `'a'` for append.
 
-For a full list of modes see: https://stackoverflow.com/a/23566951/526860
+For a full list of modes see this [StackOverFlow question](https://stackoverflow.com/a/23566951/526860)
 
 As of Python 2.6 the recommended way of working with files is via the `io`
 module which has an
