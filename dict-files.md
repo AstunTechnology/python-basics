@@ -45,7 +45,7 @@ print d['z']                     ## Throws KeyError
 
 if 'z' in d: print d['z']        ## Avoid KeyError
 print d.get('z')                 ## None (instead of KeyError)
-print d.get('z', '')             ## Empty string (instead of KeyError)
+print d.get('z', '')             ## Empty string (instead of None)
 ```
 
 ![dict with keys 'a' 'o' 'g'](images/dict.png)
