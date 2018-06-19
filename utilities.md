@@ -7,8 +7,8 @@ modules to solve common problems.
 File System -- os, os.path, shutil
 ----------------------------------
 
-The \*os\* and \*os.path\* modules include many functions to interact
-with the file system. The \*shutil\* module can copy files.
+The *os* and *os.path* modules include many functions to interact
+with the file system. The *shutil* module can copy files.
 
 -   [os module docs](https://docs.python.org/2.7/library/os.html)
 -   `filenames = os.listdir(dir)` -- list of filenames in that directory
@@ -22,10 +22,10 @@ with the file system. The \*shutil\* module can copy files.
     dir/foo/bar.html, return the dirname "dir/foo" and basename
     "bar.html"
 -   `os.path.exists(path)` -- true if it exists
--   `os.mkdir(dir\_path)` -- makes one dir, `os.makedirs(dir\_path)` makes
+-   `os.mkdir(dir_path)` -- makes one dir, `os.makedirs(dir_path)` makes
     all the needed dirs in this path
--   `shutil.copy(source-path, dest-path)` -- copy a file (dest path
-    directories should exist)
+-   `shutil.copy(source_path, dest_path)` -- copy a file (dest\_path
+    directory should exist)
 
 ```python
 ## Example pulls filenames from a dir, prints their relative and absolute paths
