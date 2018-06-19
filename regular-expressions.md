@@ -337,7 +337,7 @@ technique not needed for the exercises.
 
 Suppose you have text with tags in it: 
 
-    <b>foo</b> and <i>so on</i>;
+    <b>foo</b> and <i>so on</i>
 
 Suppose you are trying to match each tag with the pattern
 `(<.*>)` -- what does it match first?
@@ -352,9 +352,9 @@ There is an extension to regular expression where you add a `?` at the
 end, such as `.*?` or `.+?`, changing them to be non-greedy. Now they stop
 as soon as they can. So the pattern `(<.*?>)` will get just
 `<b>` as the first match, and `</b>` as the second match,
-and so on getting each &lt;..&gt; pair in turn. The style is typically
+and so on getting each `<..>` pair in turn. The style is typically
 that you use a `.*?`, and then immediately its right look for some
-concrete marker (&gt; in this case) that forces the end of the `.*?` run.
+concrete marker (`>` in this case) that forces the end of the `.*?` run.
 
 The `*?` extension originated in Perl, and regular expressions that
 include Perl's extensions are known as Perl Compatible Regular
@@ -364,9 +364,12 @@ utils etc. have a flag where they accept pcre patterns.
 An older but widely used technique to code this idea of "all of these
 chars except stopping at X" uses the square-bracket style. For the above
 you could write the pattern, but instead of `.*` to get all the chars,
-use `\[\^<\]\*` which skips over all characters which are not &gt; (the
+use `[^<]*` which skips over all characters which are not `>` (the
 leading `^` "inverts" the square bracket set, so it matches any char not
 in the brackets).
+
+**Nothing in the previous section should be taken as meaning you can parse HTML with regular expressions, 
+[because you can't](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454).
 
 Substitution (optional)
 -----------------------
