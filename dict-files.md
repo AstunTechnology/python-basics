@@ -150,7 +150,7 @@ The `open()` function opens and returns a file handle that can be used to read
 or write a file in the usual way. The code `f = open('foo.txt', 'r')` opens the
 file into the variable `f`, ready for reading operations, and use `f.close()`
 when finished. The `'r'` stands for the read "mode", instead of `'r'`, use
-`'w'` for writing, and `'a'` for append.
+`'w'` for writing, and `'a'` for append. Python's file objects can now support end of line conventions other than the one followed by the platform on which Python is running. Opening a file with the mode 'U' or 'rU' will open a file for reading in universal newline mode.
 
 For a full list of modes see this [StackOverFlow question](https://stackoverflow.com/a/23566951/526860)
 
