@@ -232,7 +232,7 @@ little steps.
 **Note**: if you are using the QGis console for development then you may need to add 
 the full path to the file name in the `main` statement at the end of the file:
 
-`
+    `main(r'C:\Users\PhotonUser\My Files\Home Folder\python\basic\small.txt', True)`
 
 Exercise: wordcount.py
 ----------------------
