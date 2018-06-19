@@ -122,25 +122,25 @@ exception.
 HTTP -- urllib2 and urlparse
 ---------------------------
 
-The module \*urllib2\* provides url fetching -- making a url look like a
-file you can read from. The \*urlparse\* module can take apart and put
+The module *urllib2* provides url fetching -- making a url look like a
+file you can read from. The *urlparse* module can take apart and put
 together urls.
 
 -   [urllib2 module
     docs](https://docs.python.org/2/library/urllib2.html)
--   ufile = urllib2.urlopen(url) -- returns a file like object for that
+-   `ufile = urllib2.urlopen(url)` -- returns a file like object for that
     url
--   text = ufile.read() -- can read from it, like a file (readlines()
+-   `text = ufile.read()` -- can read from it, like a file (readlines()
     etc. also work)
--   info = ufile.info() -- the meta info for that request.
-    info.gettype() is the mime type, e.g. 'text/html'
--   baseurl = ufile.geturl() -- gets the "base" url for the request,
+-   `info = ufile.info()` -- the meta info for that request.
+    `info.gettype()` is the mime type, e.g. 'text/html'
+-   `baseurl = ufile.geturl()` -- gets the "base" url for the request,
     which may be different from the original because of redirects
--   urllib2.urlretrieve(url, filename) -- downloads the url data to the
+-   `urllib2.urlretrieve(url, filename)` -- downloads the url data to the
     given file path
--   urlparse.urljoin(baseurl, url) -- given a url that may or may not be
+-   `urlparse.urljoin(baseurl, url)` -- given a url that may or may not be
     full, and the baseurl of the page it comes from, return a full url.
-    Use geturl() above to provide the base url.
+    Use `geturl()` above to provide the base url.
 
 ```python
 ## Given a url, try to retrieve it.
