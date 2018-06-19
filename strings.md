@@ -72,10 +72,11 @@ text = 'The value of pi is '  + str(pi)  ## Yes
 
 For numbers, the standard operators, `+`, `/`, `*` work in the usual way.
 There is no `++` operator, but `+=`, `-=`, etc. work. If you want integer
-division, it is most correct to use 2 slashes -- e.g. 6 // 5 is 1
-(previous to python 3000, a single / does int division with ints anyway,
-but moving forward // is the preferred way to indicate that you want int
-division.)
+division, it is most correct to use 2 slashes -- e.g. `6 // 5` is `1`
+(previous to python 3000, a single `/` does int division with ints anyway,
+but moving forward `//` is the preferred way to indicate that you want int
+division.) You use `%` to get the remainder (modulo) of an integer division, 
+so `6%5` is `1` for the remanider of `6//5`.
 
 ### Printing
 
@@ -183,8 +184,8 @@ list section later, slices work with lists too.
 ### String %
 
 Python has a printf()-like facility to put together a string. The %
-operator takes a printf-type format string on the left (%d int, %s
-string, %f/%g floating point), and the matching values in a tuple on the
+operator takes a printf-type format string on the left (`%d` int, `%s`
+string, `%f`/`%g` floating point), and the matching values in a tuple on the
 right (a tuple is made of values separated by commas, typically grouped
 inside parentheses):
 
@@ -267,9 +268,9 @@ Python has the usual comparison operations: `==`,
 `!=`, `<`, `<=`, `>`, `>=`.
 
 The boolean operators are the spelled out
-words `and`, `or`, `not` (Python does not use the C-style && ||
-!). Here's what the code might look like for a policeman pulling over a
-speeder -- notice how each block of then/else statements starts with a :
+words `and`, `or`, `not` (Python does not use the C-style `&&` `||`
+`!`). Here's what the code might look like for a policeman pulling over a
+speeder -- notice how each block of then/else statements starts with a `:`
 and the statements are grouped by their indentation:
 
 ```python
