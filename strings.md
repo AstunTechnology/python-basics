@@ -86,7 +86,11 @@ newline).
 
 A "raw" string literal is prefixed by an 'r' and passes all
 the chars through without special treatment of backslashes, so r'x\\nx'
-evaluates to the length-4 string 'x\\nx'. A 'u' prefix allows you to
+evaluates to the length-4 string 'x\\nx'. **Except** for `\"` (or `\'`) which are
+printed as `"` and `'`, so be careful with windows paths as `r"c:\temp\"` is not valid 
+as the `\` hides the final `"`, see this [stackoverflow question](https://stackoverflow.com/questions/647769/why-cant-pythons-raw-string-literals-end-with-a-single-backslash) for more explanation. 
+
+A 'u' prefix allows you to
 write a unicode string literal (Python has lots of other unicode support
 features -- see the docs below).
 
