@@ -369,7 +369,7 @@ leading `^` "inverts" the square bracket set, so it matches any char not
 in the brackets).
 
 **Nothing in the previous section should be taken as meaning you can parse HTML with regular expressions, 
-[because you can't](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454).
+[because you can't](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags/1732454#1732454).**
 
 Substitution (optional)
 -----------------------
