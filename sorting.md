@@ -94,8 +94,8 @@ print list
 list1 = list.sort()    ## NO incorrect, sort() returns None
 ```
 
-The above is a very common misunderstanding with sort() -- it \*does not
-return\* the sorted list. The sort() method must be called on a list; it
+The above is a very common misunderstanding with sort() -- it **does not
+return** the sorted list. The sort() method must be called on a list; it
 does not work on any enumerable collection (but the sorted() function
 above works on anything). The sort() method predates the sorted()
 function, so you will likely see it in older code. The sort() method
@@ -138,7 +138,8 @@ tuple = ('hi',)   ## size-1 tuple
 It's a funny case in the syntax, but the comma is necessary to
 distinguish the tuple from the ordinary case of putting an expression in
 parentheses. In some cases you can omit the parenthesis and Python will
-see from the commas that you intend a tuple.
+see from the commas that you intend a tuple. This will also cause mysterious 
+errors relating to unexpected tuples if you accidently leave a comma at the end of a line.
 
 Assigning a tuple to an identically sized tuple of variable names
 assigns all the corresponding values. If the tuples are not the same
