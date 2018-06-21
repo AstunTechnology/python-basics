@@ -92,8 +92,8 @@ the good performance behavior and you can forget about `xrange()`).
 
 ### While Loop
 
-Python also has the standard while-loop, and the \*break\* and
-\*continue\* statements work as in C++ and Java, altering the course of
+Python also has the standard while-loop, and the *break* and
+*continue* statements work as in C++ and Java, altering the course of
 the innermost loop. The above for/in loops solves the common case of
 iterating over every element in a list, but the while loop gives you
 total control over the index numbers. Here's a while loop which accesses
@@ -131,7 +131,7 @@ Here are some other common list methods.
     given index. Returns the rightmost element if index is omitted
     (roughly the opposite of `append()`).
 
-Notice that these are \*methods\* on a list object, while `len()` is a
+Notice that these are **methods** on a list object, while `len()` is a
 function that takes the list (or string or whatever) as an argument.
 
 ```python
@@ -185,7 +185,7 @@ Exercise: list1.py
 ------------------
 
 To practice the material in this section, try the problems in
-**list1.py** that do not use sorting (in the [Basic
+**list1.py** that do **not use sorting** (in the [Basic
 Exercises](basic)).
 
 ----

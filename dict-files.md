@@ -45,7 +45,7 @@ print d['z']                     ## Throws KeyError
 
 if 'z' in d: print d['z']        ## Avoid KeyError
 print d.get('z')                 ## None (instead of KeyError)
-print d.get('z', '')             ## Empty string (instead of KeyError)
+print d.get('z', '')             ## Empty string (instead of None)
 ```
 
 ![dict with keys 'a' 'o' 'g'](images/dict.png)
@@ -150,9 +150,9 @@ The `open()` function opens and returns a file handle that can be used to read
 or write a file in the usual way. The code `f = open('foo.txt', 'r')` opens the
 file into the variable `f`, ready for reading operations, and use `f.close()`
 when finished. The `'r'` stands for the read "mode", instead of `'r'`, use
-`'w'` for writing, and `'a'` for append.
+`'w'` for writing, and `'a'` for append. Python's file objects can now support end of line conventions other than the one followed by the platform on which Python is running. Opening a file with the mode 'U' or 'rU' will open a file for reading in universal newline mode.
 
-For a full list of modes see: https://stackoverflow.com/a/23566951/526860
+For a full list of modes see this [StackOverFlow question](https://stackoverflow.com/a/23566951/526860)
 
 As of Python 2.6 the recommended way of working with files is via the `io`
 module which has an
@@ -228,6 +228,11 @@ to get to the next state. Python is very quick with this pattern,
 allowing you to make a little change and run the program to see how it
 works. Take advantage of that quick turnaround to build your program in
 little steps.
+
+**Note**: if you are using the QGIS console for development then you may need to add 
+the full path to the file name in the `main` statement at the end of the file:
+
+    `main(r'C:\Users\PhotonUser\My Files\Home Folder\python\basic\small.txt', True)`
 
 Exercise: wordcount.py
 ----------------------
