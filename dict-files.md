@@ -229,7 +229,7 @@ allowing you to make a little change and run the program to see how it
 works. Take advantage of that quick turnaround to build your program in
 little steps.
 
-**Note**: if you are using the QGis console for development then you may need to add 
+**Note**: if you are using the QGIS console for development then you may need to add 
 the full path to the file name in the `main` statement at the end of the file:
 
     `main(r'C:\Users\PhotonUser\My Files\Home Folder\python\basic\small.txt', True)`
