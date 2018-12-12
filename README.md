@@ -7,3 +7,5 @@ and code samples are licensed under the [Apache 2.0
 License](http://www.apache.org/licenses/LICENSE-2.0).
 
 Updated to include modern Python 2.7 features.
+
+> Short link for this page: [http://bit.ly/python-basics](http://bit.ly/python-basics)
