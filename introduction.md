@@ -143,7 +143,7 @@ Python's use of whitespace feels a little strange at first, but it's
 logical and I found I got used to it very quickly. Avoid using TABs as
 they greatly complicate the indentation scheme (not to mention TABs may
 mean different things on different platforms). Set your editor to insert
-spaces instead of TABs for Python code.
+spaces instead of TABs for Python code. 
 
 A common question beginners ask is, "How many spaces should I indent?"
 According to [the official Python style guide (PEP
@@ -254,7 +254,8 @@ There are a variety of ways to get help for Python.
     list](http://mail.python.org/mailman/listinfo/tutor) specifically
     designed for those who are new to Python and/or programming!
 -   Many questions (and answers) can be found on
-    [StackOverflow](http://stackoverflow.com/questions/tagged/python)
+    [StackOverflow](http://stackoverflow.com/questions/tagged/python), 
+    [GIS Stackexchange](https://gis.stackexchange.com/questions/tagged/python)
     and [Quora](http://quora.com/Python-programming-language).
 -   Use the help() and dir() functions (see below).
 
