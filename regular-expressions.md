@@ -27,9 +27,9 @@ import re
 str = 'an example word:cat!!'
 match = re.search(r'word:\w\w\w', str)
 if match:
-    print 'found', match.group()
+    print('found', match.group())
 else:
-    print 'did not find'
+    print('did not find')
 ```
 
 The code `match = re.search(pat, str)` stores the search result in a
@@ -56,7 +56,7 @@ single chars:
     (details below)
 -   `.` (a period) -- matches any single character except newline '\\n'
 -   `\w` -- (lowercase w) matches a "word" character: a letter or digit
-    or underbar `[a-zA-Z0-9\_]`. Note that although "word" is the
+    or underscore `[a-zA-Z0-9\_]`. Note that although "word" is the
     mnemonic for this, it only matches a single word char, not a
     whole word. `\W` (upper case W) matches any non-word character.
 -   `\b` -- boundary between word and non-word
@@ -97,7 +97,7 @@ match = re.search(r'iii', 'piiig')
 match.group()
 
 match = re.search(r'igs', 'piiig')
-print match
+print(match)
 
 ## . = any char but \n
 match = re.search(r'..g', 'piiig')
@@ -126,7 +126,10 @@ in the pattern
 
 First the search finds the leftmost match for the pattern, and second it
 tries to use up as much of the string as possible -- i.e. `+` and `*` go as
-far as possible (the `+` and `*` are said to be "greedy").
+far as possible (the `+` and `*` are said to be "greedy"). If you ever need them
+to be less greedy you can use `+?` and `*?` instead and the pattern will only
+match the minimum pattern. For example with a string `<a>b<c>`, `<.*>` will
+match the whole string but `<.*?>` will only match `<a>`.
 
 Repetition Examples
 -------------------
@@ -157,8 +160,8 @@ match = re.search(r'b\w+', 'foobar')
 Emails Example
 --------------
 
-Suppose you want to find the email address inside the string 'xyz
-alice-b@google.com purple monkey'. We'll use this as a running example
+Suppose you want to find the email address inside the string 
+' purple alice-b@google.com monkey dishwasher'. We'll use this as a running example
 to demonstrate more regular expression features. Here's an attempt using
 the pattern r'\\w+@\\w+':
 
@@ -167,20 +170,20 @@ import re
 str = 'purple alice-b@google.com monkey dishwasher'
 match = re.search(r'\w+@\w+', str)
 if match:
-    print match.group()
+    print(match.group())
 ```
 
 The search does not get the whole email address in this case because the
-\\w does not match the '-' or '.' in the address. We'll fix this using
+`\w` does not match the `-` or `.` in the address. We'll fix this using
 the regular expression features below.
 
 ### Square Brackets
 
-Square brackets can be used to indicate a set of chars, so \[abc\]
-matches 'a' or 'b' or 'c'. The codes \\w, \\s etc. work inside square
-brackets too with the one exception that dot (.) just means a literal
+Square brackets can be used to indicate a set of chars, so `[abc]`
+matches 'a' or 'b' or 'c'. The codes `\w`, `\s` etc. work inside square
+brackets too with the one exception that dot (`.`) just means a literal
 dot. For the emails problem, the square brackets are an easy way to add
-'.' and '-' to the set of chars which can appear around the @ with the
+`.` and `-` to the set of chars which can appear around the `@` with the
 pattern `r'[\w.-]+@[\w.-]+'` to get the whole email address:
 
 ```python
@@ -188,12 +191,12 @@ import re
 str = 'purple alice-b@google.com monkey dishwasher'
 match = re.search(r'[\w.-]+@[\w.-]+', str)
 if match:
-    print match.group()
+    print(match.group())
 ```
 
 (More square-bracket features) You can also use a dash to indicate a
 range, so `[a-z]` matches all lowercase letters. To use a dash without
-indicating a range, put the dash last, e.g. `[abc-]`. An up-hat (`^`) at
+indicating a range, put the dash last, e.g. `[abc-]`. An caret (up-hat) (`^`) at
 the start of a square-bracket set inverts it, so `[^ab]` means any char
 except 'a' or 'b'.
 
@@ -216,9 +219,9 @@ as usual.
 str = 'purple alice-b@google.com monkey dishwasher'
 match = re.search('([\w.-]+)@([\w.-]+)', str)
 if match:
-    print match.group()   ## 'alice-b@google.com' (the whole match)
-    print match.group(1)  ## 'alice-b' (the username, group 1)
-    print match.group(2)  ## 'google.com' (the host, group 2)
+    print(match.group())   ## 'alice-b@google.com' (the whole match)
+    print(match.group(1))  ## 'alice-b' (the username, group 1)
+    print(match.group(2))  ## 'google.com' (the host, group 2)
 ```
 
 A common workflow with regular expressions is that you write a pattern
@@ -230,7 +233,7 @@ findall
 
 `findall()` is probably the single most powerful function in the `re`
 module. Above we used `re.search()` to find the first match for a pattern.
-`findall()` finds \*all\* the matches and returns them as a list of
+`findall()` finds *all* the matches and returns them as a list of
 strings, with each string representing one match.
 
 ```python
@@ -241,7 +244,7 @@ str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
 emails = re.findall(r'[\w\.-]+@[\w\.-]+', str) ## ['alice@google.com', 'bob@abc.com']
 for email in emails:
     # do something with each found email string
-    print email
+    print(email)
 ```
 
 findall With Files
@@ -251,17 +254,16 @@ For files, you may be in the habit of writing a loop to iterate over the
 lines of the file, and you could then call findall() on each line.
 Instead, let findall() do the iteration for you -- much better! Just
 feed the whole file text into findall() and let it return a list of all
-the matches in a single step (recall that f.read() returns the whole
+the matches in a single step (recall that `f.read()` returns the whole
 text of a file in a single string):
 
 ```python
 # Open file
-f = io.open('foo.txt', 'r')
-text = f.read()
-f.close()
+with open('foo.txt', 'r') as f:
+  text = f.read()
 
 strings = re.findall(r'another', text)
-print strings
+print(strings)
 ```
 
 findall and Groups
@@ -279,13 +281,13 @@ the email pattern, then findall() returns a list of tuples, each length
 str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
 
 tuples = re.findall(r'([\w\.-]+)@([\w\.-]+)', str)
-print tuples
+print(tuples)
 
 for tuple in tuples:
-    print tuple[0]
-    print tuple[1]
+    print(tuple[0])
+    print(tuple[1])
 ```
-
+##TODO - here
 Once you have the list of tuples, you can loop over it to do some
 computation for each tuple. If the pattern includes no parenthesis, then
 `findall()` returns a list of found strings as in earlier examples. If the
@@ -386,7 +388,7 @@ changes them to keep the user (`\1`) but have yo-yo-dyne.com as the host.
 str = 'purple alice@google.com, blah monkey bob@abc.com blah dishwasher'
 ## re.sub(pat, replacement, str) -- returns new string with all replacements,
 ## \1 is group(1), \2 group(2) in the replacement
-print re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str)
+print(re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str))
 ```
 
 Exercise

@@ -209,7 +209,16 @@ to it.
 >
 ```
 As you can see the variables' values are substituted into the string when it is
-used, so if you change a value you need to recreate the string.
+used, so if you change a value you need to recreate the string. You will also
+see the alternative `%` operator which takes a tuple of values and inserts them
+into the string where items are indicated by `%type` sections.
+
+```python
+> s = "%d pigs little pigs come out or I'll %s and %s and %s" % (pigs,huff,puff,rest)
+> s
+"3 pigs little pigs come out or I'll huff and puff and blow your house down"
+
+```
 
 Python also provides a [full string
 formatter](https://docs.python.org/3/library/string.html#string-formatting)
