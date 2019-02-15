@@ -126,10 +126,7 @@ in the pattern
 
 First the search finds the leftmost match for the pattern, and second it
 tries to use up as much of the string as possible -- i.e. `+` and `*` go as
-far as possible (the `+` and `*` are said to be "greedy"). If you ever need them
-to be less greedy you can use `+?` and `*?` instead and the pattern will only
-match the minimum pattern. For example with a string `<a>b<c>`, `<.*>` will
-match the whole string but `<.*?>` will only match `<a>`.
+far as possible (the `+` and `*` are said to be "greedy"). 
 
 Repetition Examples
 -------------------
@@ -287,22 +284,21 @@ for tuple in tuples:
     print(tuple[0])
     print(tuple[1])
 ```
-##TODO - here
 Once you have the list of tuples, you can loop over it to do some
 computation for each tuple. If the pattern includes no parenthesis, then
 `findall()` returns a list of found strings as in earlier examples. If the
-pattern includes a single set of parenthesis, then findall() returns a
+pattern includes a single set of parenthesis, then `findall()` returns a
 list of strings corresponding to that single group. (Obscure optional
 feature: Sometimes you have paren `( )` groupings in the pattern, but
 which you do not want to extract. In that case, write the parens with a
-?: at the start, e.g. `(?: )` and that left paren will not count as a
+`?:` at the start, e.g. `(?: )` and that left paren will not count as a
 group result.)
 
 RE Workflow and Debug
 ---------------------
 
 Regular expression patterns pack a lot of meaning into just a few
-characters , but they are so dense, you can spend a lot of time
+characters, but they are so dense, you can spend a lot of time
 debugging your patterns. Set up your runtime so you can run a pattern
 and print what it matches easily, for example by running it on a small
 test text and printing the result of `findall()`. If the pattern matches
@@ -321,14 +317,14 @@ match. The option flag is added as an extra argument to the `search()` or
 
 -   `IGNORECASE` -- ignore upper/lowercase differences for matching, so
     'a' matches both 'a' and 'A'.
--   `DOTALL` -- allow dot (.) to match newline -- normally it matches
-    anything but newline. This can trip you up -- you think .\* matches
+-   `DOTALL` -- allow dot (`.`) to match newline -- normally it matches
+    anything but newline. This can trip you up -- you think `.*` matches
     everything, but by default it does not go past the end of a line.
-    Note that \\s (whitespace) includes newlines, so if you want to
+    Note that `\s` (whitespace) includes newlines, so if you want to
     match a run of whitespace that may include a newline, you can just
-    use \\s\*
--   `MULTILINE` -- Within a string made of many lines, allow \^ and \$ to
-    match the start and end of each line. Normally \^/\$ would just
+    use `\s*`
+-   `MULTILINE` -- Within a string made of many lines, allow `^` and `$` to
+    match the start and end of each line. Normally `^/$` would just
     match the start and end of the whole string.
 
 Greedy vs. Non-Greedy (optional)
@@ -407,5 +403,4 @@ Except as otherwise noted, the content of this page is licensed under
 the [Creative Commons Attribution 3.0
 License](http://creativecommons.org/licenses/by/3.0/), and code samples
 are licensed under the [Apache 2.0
-License](http://www.apache.org/licenses/LICENSE-2.0). For details, see
-our [Site Policies](https://developers.google.com/terms/site-policies).
+License](http://www.apache.org/licenses/LICENSE-2.0). 

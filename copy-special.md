@@ -13,18 +13,18 @@ your code in copyspecial.py.
 
 The copyspecial.py program takes one or more directories as its
 arguments. We'll say that a "special" file is one where the name
-contains the pattern \_\_w\_\_ somewhere, where the w is one or more
-word chars. The provided main() includes code to parse the command line
+contains the pattern `__w__` somewhere, where the w is one or more
+word chars. The provided `main()` includes code to parse the command line
 arguments, but the rest is up to you. Write functions to implement the
-features below and modify main() to call your functions.
+features below and modify `main()` to call your functions.
 
 Suggested functions for your solution(details below):
 
--   get\_special\_paths(dir) -- returns a list of the absolute paths of
+-   `get_special_paths(dir)` -- returns a list of the absolute paths of
     the special files in the given directory
--   copy\_to(paths, dir) given a list of paths, copies those files into
+-   `copy_to(paths, dir)` given a list of paths, copies those files into
     the given directory
--   zip\_to(paths, zippath) given a list of paths, zip those files up
+-   `zip_to(paths, zippath)` given a list of paths, zip those files up
     into the given zipfile
 
 Part A (manipulating file paths)
@@ -45,7 +45,7 @@ We'll assume that names are not repeated across the directories
 Part B (file copying)
 ---------------------
 
-If the "--todir dir" option is present at the start of the command line,
+If the "`--todir dir`" option is present at the start of the command line,
 do not print anything and instead copy the files to the given directory,
 creating it if necessary. Use the python module "shutil" for file
 copying.
@@ -57,7 +57,7 @@ copying.
 Part C (writing zip files)
 ------------------------------------
 
-If the "--tozip zipfile" option is present at the start of the command
+If the "`--tozip zipfile`" option is present at the start of the command
 line create a zip file using the `zipfile` package.
 
     $ ./copyspecial.py --tozip tmp.zip .
@@ -68,5 +68,4 @@ Except as otherwise noted, the content of this page is licensed under
 the [Creative Commons Attribution 3.0
 License](http://creativecommons.org/licenses/by/3.0/), and code samples
 are licensed under the [Apache 2.0
-License](http://www.apache.org/licenses/LICENSE-2.0). For details, see
-our [Site Policies](https://developers.google.com/terms/site-policies).
+License](http://www.apache.org/licenses/LICENSE-2.0). 
