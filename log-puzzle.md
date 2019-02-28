@@ -21,10 +21,10 @@ The slice urls are hidden inside apache log files (the open source
 [apache](http://httpd.apache.org/) web server is the most widely used
 server on the internet). Each log file is from some server, and the
 desired slice urls are hidden within the logs. The log file encodes what
-server it comes from like this: the log file animal\_code.google.com is
+server it comes from like this: the log file `animal_code.google.com` is
 from the code.google.com server (formally, we'll say that the server
 name is whatever follows the first underbar). The
-animial\_code.google.com log file contains the data for the "animal"
+`animial_code.google.com` log file contains the data for the "animal"
 puzzle image. Although the data in the log files has the syntax of a
 real apache web server, the data beyond what's needed for the puzzle is
 randomized data from a real log file.
@@ -38,7 +38,7 @@ what apache log files look like):
 The first few numbers are the address of the requesting browser. The
 most interesting part is the "GET *path* HTTP" showing the path of a web
 request received by the server. The path itself never contain spaces,
-and is separated from the GET and HTTP by spaces (regex suggestion: \\S
+and is separated from the GET and HTTP by spaces (regex suggestion: `\S`
 (upper case S) matches any non-space char). Find the lines in the log
 where the string "puzzle" appears inside the path, ignoring the many
 other lines in the log.
@@ -46,12 +46,12 @@ other lines in the log.
 Part A - Log File To Urls
 -------------------------
 
-Complete the read\_urls(filename) function that extracts the puzzle urls
+Complete the `read_urls(filename)` function that extracts the puzzle urls
 from inside a logfile. Find all the "puzzle" path urls in the logfile.
 Combine the path from each url with the server name from the filename to
 form a full url, e.g.
 "http://www.example.com/path/puzzle/from/inside/file". Screen out urls
-that appear more than once. The read\_urls() function should return the
+that appear more than once. The `read_urls()` function should return the
 list of full urls, sorted into alphabetical order and without
 duplicates. Taking the urls in alphabetical order will yield the image
 slices in the correct left-to-right order to re-create the original
@@ -66,7 +66,7 @@ one per line.
 Part B - Download Images Puzzle
 -------------------------------
 
-Complete the download\_images() function which takes a sorted list of
+Complete the `download_images()` function which takes a sorted list of
 urls and a directory. Download the image from each url into the given
 directory, creating the directory first if necessary (see the "os"
 module to create a directory, and "urllib.urlretrieve()" for downloading
@@ -78,8 +78,8 @@ working. Each image is a little vertical slice from the original. How to
 put the slices together to re-create the original? It can be solved
 nicely with a little html (knowledge of HTML is not required).
 
-The download\_images() function should also create an index.html file in
-the directory with an \*img\* tag to show each local image file. The img
+The `download_images()` function should also create an index.html file in
+the directory with an *img* tag to show each local image file. The img
 tags should all be on one line together without separation. In this way,
 the browser displays all the slices together seamlessly. You do not need
 knowledge of HTML to do this; just create an index.html file that looks
@@ -116,7 +116,7 @@ sorting a list of urls each ending with the word-word.jpg pattern should
 order the urls by the second word.
 
 Extend your code to order such urls properly, and then you should be
-able to decode the second place\_code.google.com puzzle which shows a
+able to decode the i`second_place_code.google.com` puzzle which shows a
 famous place. What place does it show?
 
 CC Attribution: the images used in this puzzle were made available by
@@ -132,5 +132,4 @@ Except as otherwise noted, the content of this page is licensed under
 the [Creative Commons Attribution 3.0
 License](http://creativecommons.org/licenses/by/3.0/), and code samples
 are licensed under the [Apache 2.0
-License](http://www.apache.org/licenses/LICENSE-2.0). For details, see
-our [Site Policies](https://developers.google.com/terms/site-policies).
+License](http://www.apache.org/licenses/LICENSE-2.0). 

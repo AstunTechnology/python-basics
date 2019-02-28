@@ -28,8 +28,8 @@ happens. (See below to see what really happens!)
 
 ```python
 $ python        ## Run the Python interpreter
-Python 2.7.9 (default, Dec 30 2014, 03:41:42) 
-[GCC 4.1.2 20080704 (Red Hat 4.1.2-55)] on linux2
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> a = 6
 >>> a
@@ -41,33 +41,41 @@ Type "help", "copyright", "credits" or "license" for more information.
 'hi'
 >>> len(a)
 2
->>> a + len(a)  ## try something that doesn't work
+>>> a + len(a)          ## try something that doesn't work
 Traceback (most recent call last):
-  File "", line 1, in 
-TypeError: cannot concatenate 'str' and 'int' objects
+  File "<stdin>", line 1, in <module>
+TypeError: must be str, not int
 >>> a + str(len(a))
 'hi2'
->>> foo         ## try something else that doesn't work
+>>> foo                 ## try something else that doesn't work
 Traceback (most recent call last):
-  File "", line 1, in 
+  File "<stdin>", line 1, in <module>
 NameError: name 'foo' is not defined
 ```
+
+**Note:** you may need to type `python3` to make sure you are working with the
+latest version of python. If you see Python 2.7.9 instead of Python 3.6.7 try
+that or ask your instructor.
 
 As you can see above, it's easy to experiment with variables and
 operators. Also, the interpreter throws, or "raises" in Python parlance,
 a runtime error if the code tries to read a variable that has not been
-assigned a value. Like C++ and Java, Python is case sensitive so "a" and
-"A" are different variables. The end of a line marks the end of a
+assigned a value. Like C++ and Java, Python is case sensitive so "`a`" and
+"`A`" are different variables. The end of a line marks the end of a
 statement, so unlike C++ and Java, Python does not require a semicolon
-at the end of each statement. Comments begin with a '\#' and extend to
+at the end of each statement. Comments begin with a `#` and extend to
 the end of the line.
 
 Python source code
 ------------------
 
-Python source files use the ".py" extension and are called "modules."
+Python source files use the ".py" extension and are called "modules".
 With a Python module `hello.py`, the easiest way to run it is with the
-shell command "python hello.py Alice" which calls the Python interpreter
+shell command 
+
+    python hello.py Alice
+    
+which calls the Python interpreter
 to execute the code in `hello.py`, passing it the command line argument
 "Alice". See the [official docs
 page](http://docs.python.org/using/cmdline) on all the different options
@@ -85,17 +93,18 @@ def repeat(s, exclaim):
     if exclaim:
         result = result + '!!!'
     return result
+
 ```
 
 Notice also how the lines that make up the function or if-statement are
 grouped by all having the same level of indentation. We also presented 2
 different ways to repeat strings, using the + operator which is more
-user-friendly, but \* also works because it's Python's "repeat"
+user-friendly, but `*` also works because it's Python's "repeat"
 operator, meaning that `'-' * 10` gives `'----------'`, a neat way to
-create an onscreen "line." In the code comment, we hinted that \* works
-faster than +, the reason being that \* calculates the size of the
-resulting object once whereas with +, that calculation is made each time `+`
-is called. Both + and \* are called "overloaded" operators because
+create an onscreen "line." In the code comment, we hinted that `*` works
+faster than +, the reason being that `*` calculates the size of the
+resulting object once whereas with `+`, that calculation is made each time `+`
+is called. Both `+` and `*` are called "overloaded" operators because
 they mean different things for numbers vs. for strings (and other data
 types).
 
@@ -113,8 +122,8 @@ Here is code that calls the above repeat() function, printing what it
 returns:
 
 ```python
-print repeat('Yay', False)
-print repeat('Woo Hoo', True)
+print(repeat('Yay', False))
+print(repeat('Woo Hoo', True))
 ```
 
 At run time, functions must be defined by the execution of a "def"
@@ -134,7 +143,7 @@ Python's use of whitespace feels a little strange at first, but it's
 logical and I found I got used to it very quickly. Avoid using TABs as
 they greatly complicate the indentation scheme (not to mention TABs may
 mean different things on different platforms). Set your editor to insert
-spaces instead of TABs for Python code.
+spaces instead of TABs for Python code. 
 
 A common question beginners ask is, "How many spaces should I indent?"
 According to [the official Python style guide (PEP
@@ -149,21 +158,21 @@ type, name, etc. checks on each line until that line runs.
 
 ```python
 if name == 'Guido':
-    print repeeeet(name) + '!!!'
+    print(repeeeet(name) + '!!!')
 else:
-    print repeat(name, False)
+    print(repeat(name, False))
 ```
 
 The if-statement contains an obvious error, where the `repeat()` function
 is accidentally typed in as `repeeeet()`. The funny thing in Python ...
 this code compiles and runs fine so long as the name at runtime is not
-'Guido'. Only when a run actually tries to execute the repeeeet() will
+'Guido'. Only when a run actually tries to execute the `repeeeet()` will
 it notice that there is no such function and raise an error. This just
 means that when you first run a Python program, some of the first errors
 you see will be simple typos like this. This is one area where languages
 with a more verbose type system, like Java, have an advantage ... they
 can catch such errors at compile time (but of course you have to
-maintain all that type information ... it's a tradeoff).
+maintain all that type information... it's a trade-off).
 
 Variable Names
 --------------
@@ -195,15 +204,19 @@ inadvertent use by new Python developers.
 More on Modules and their Namespaces
 ------------------------------------
 
-With the statement `import sys` you can then access the definitions in
-the `sys` module and make them available by their fully-qualified name,
-e.g. sys.exit(). (Yes, 'sys' has a namespace too!)
+With the statement `import sys` you can then access the definitions
+in the `sys` module and make them available by their fully-qualified
+name, e.g. sys.exit(). `sys` is also known as a "namespace" which is
+how Python implements scope (for the existing programmers). Namespaces
+prevent conflicts between classes, methods and objects with the same
+name that might have been written by different people.
 
 ```python
 import sys
 
 # Now can refer to sys.xxx facilities
 sys.version
+
 ```
 
 There is another import form that looks like this: "from sys import
@@ -222,7 +235,7 @@ Library." Commonly used modules/packages include:
 -   `os` — operating system interface, file system
 
 You can find the documentation of all the Standard Library modules and
-packages at <https://docs.python.org/2.7/library/>.
+packages at <https://docs.python.org/3.6/library/>.
 
 Online help, help(), and dir()
 ----------------------------------
@@ -241,7 +254,8 @@ There are a variety of ways to get help for Python.
     list](http://mail.python.org/mailman/listinfo/tutor) specifically
     designed for those who are new to Python and/or programming!
 -   Many questions (and answers) can be found on
-    [StackOverflow](http://stackoverflow.com/questions/tagged/python)
+    [StackOverflow](http://stackoverflow.com/questions/tagged/python), 
+    [GIS Stackexchange](https://gis.stackexchange.com/questions/tagged/python)
     and [Quora](http://quora.com/Python-programming-language).
 -   Use the help() and dir() functions (see below).
 

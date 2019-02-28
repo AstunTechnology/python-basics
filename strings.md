@@ -11,17 +11,17 @@ single quotes are more commonly used.
 ```
 
 Backslash escapes work the usual way within both single and double quoted
-literals -- e.g. \\n \\' \\".
+literals -- e.g. `\n` `\'` `\"`.
 
 ```python
-print 'first\nsecond'
-print 'I didn\'t do it'
+print('first\nsecond')
+print('I didn\'t do it')
 ```
 
 A double quoted string literal can contain single quotes without any fuss (e.g.
 `"I didn't do it"`) and likewise single quoted string can contain double quotes.
 
-A string literal can span multiple lines, but there must be a backslash \\ at
+A string literal can span multiple lines, but there must be a backslash `\` at
 the end of each line to escape the newline.  String literals inside triple
 quotes, `"""` or `'''`, can span multiple lines of text.
 
@@ -32,7 +32,7 @@ go to represent computed values. So for example the expression `'hello' +
 `'hellothere'`.
 
 Characters in a string can be accessed using the standard `[ ]` syntax,
-and like Java and C++, Python uses zero-based indexing, so if str is
+and like Java and C++, Python uses zero-based indexing, so if `str` is
 `'hello'` `str[1]` is `'e'`.
 
 If the index is out of bounds for the string, Python raises an error. The
@@ -45,7 +45,7 @@ syntax and the `len()` function actually work on any sequence type -- strings,
 lists, etc.. Python tries to make its operations work consistently across
 different types.
 
-*Python newbie gotcha:* don't use `len` as a variable name to avoid blocking
+**Python newbie gotcha:** don't use `len` as a variable name to avoid blocking
 out the `len()` function.
 
 The `+` operator can concatenate two strings. Notice in the code below that
@@ -53,14 +53,15 @@ variables are not pre-declared -- just assign to them and go.
 
 ```python
 s = 'hi'
-print s[1]          ## i
-print len(s)        ## 2
-print s + ' there'  ## hi there
+print(s[1])          ## i
+print(len(s))        ## 2
+print(s + ' there')  ## hi there
 ```
 
-Unlike Java, the '+' does not automatically convert numbers or other
-types to string form. The str() function converts values to a string
-form so they can be combined with other strings.
+Unlike Java, the `+` does not automatically convert numbers or other
+types to string form. The `str()` function converts values to a string
+form so they can be combined with other strings (and is why `str` is not a good
+variable name).
 
 ```python
 pi = 3.14
@@ -71,12 +72,14 @@ text = 'The value of pi is '  + str(pi)  ## Yes
 ### Numbers
 
 For numbers, the standard operators, `+`, `/`, `*` work in the usual way.
-There is no `++` operator, but `+=`, `-=`, etc. work. If you want integer
-division, it is most correct to use 2 slashes -- e.g. `6 // 5` is `1`
-(previous to python 3000, a single `/` does int division with ints anyway,
-but moving forward `//` is the preferred way to indicate that you want int
-division.) You use `%` to get the remainder (modulo) of an integer division, 
-so `6%5` is `1` for the remanider of `6//5`.
+There is no `++` operator (don't worry if you don't know what that is), 
+but `+=`, `-=`, etc. work (they add or subtract the right hand side
+to the left hand). If you want integer division, it is most correct to
+use 2 slashes -- e.g. `6 // 5` is `1` (in Python 2, a single
+`/` does int division with ints anyway, but moving forward `//` is
+the preferred way to indicate that you want int division.) You use `%`
+to get the remainder (modulo) of an integer division, so `6%5` is `1`
+for the remanider of `6//5`.
 
 ### Printing
 
@@ -90,16 +93,12 @@ evaluates to the length-4 string 'x\\nx'. **Except** for `\"` (or `\'`) which ar
 printed as `"` and `'`, so be careful with windows paths as `r"c:\temp\"` is not valid 
 as the `\` hides the final `"`, see this [stackoverflow question](https://stackoverflow.com/questions/647769/why-cant-pythons-raw-string-literals-end-with-a-single-backslash) for more explanation. 
 
-A 'u' prefix allows you to
-write a unicode string literal (Python has lots of other unicode support
-features -- see the docs below).
-
 ```python
 raw = r'this\t\n and that'
-print raw     ## this\t\n and that
+print(raw)     ## this\t\n and that
 
 text = 'this\t\n and that'
-print text
+print(text)
 
 multi = """It was the best of times.
 It was the worst of times."""
@@ -185,91 +184,91 @@ Or put another way `s[:n]` and `s[n:]` always partition the string into
 two string parts, conserving all the characters. As we'll see in the
 list section later, slices work with lists too.
 
-### String %
+### String Formatting
 
-Python has a printf()-like facility to put together a string. The %
-operator takes a printf-type format string on the left (`%d` int, `%s`
-string, `%f`/`%g` floating point), and the matching values in a tuple on the
-right (a tuple is made of values separated by commas, typically grouped
-inside parentheses):
+Python allows you to use a template style string rather than having to add a
+number of strings together. This is more efficient if your program is going to
+do a lot of string manipulation (as otherwise the strings keep having to be
+copied). You tell python that it should **f**ormat the string by prepending `f`
+to it.
+
+```console
+> pigs=3
+> huff="huff"
+> puff="puff"
+> rest="blow your house down"
+> text = f"{pigs} little pigs come out or I'll {huff} and {puff} and {rest}"
+> text
+"3 little pigs come out or I'll huff and puff and blow your house down"
+> pigs=2
+> text
+"3 little pigs come out or I'll huff and puff and blow your house down"
+> text = f"{pigs} little pigs come out or I'll {huff} and {puff} and {rest}"
+> text
+"2 little pigs come out or I'll huff and puff and blow your house down"
+>
+```
+As you can see the variables' values are substituted into the string when it is
+used, so if you change a value you need to recreate the string. You will also
+see the alternative `%` operator which takes a tuple of values and inserts them
+into the string where items are indicated by `%type` sections.
 
 ```python
-# % operator
-text = "%d little pigs come out or I'll %s and %s and %s" % (3, 'huff', 'puff', 'blow down')
+> s = "%d pigs little pigs come out or I'll %s and %s and %s" % (pigs,huff,puff,rest)
+> s
+"3 pigs little pigs come out or I'll huff and puff and blow your house down"
+
 ```
 
-The above line is kind of long -- suppose you want to break it into
-separate lines. You cannot just split the line after the '%' as you
-might in other languages, since by default Python treats each line as a
-separate statement (on the plus side, this is why we don't need to type
-semi-colons on each line). To fix this, enclose the whole expression in
-an outer set of parenthesis -- then the expression is allowed to span
-multiple lines. This code-across-lines technique works with the various
-grouping constructs detailed below: ( ), [ ], { }.
-
-```python
-  # add parens to make the long-line work:
-  text = ("%d little pigs come out or I'll %s and %s and %s" %
-    (3, 'huff', 'puff', 'blow down'))
-```
+Python also provides a [full string
+formatter](https://docs.python.org/3/library/string.html#string-formatting)
+if you need to carry out type conversions of your variables but you are
+unlikely to need this in your day to day work.
 
 ### Unicode 😀
 
-Regular Python strings are \*not\* unicode, they are just plain bytes.
-To create a unicode string, use the 'u' prefix on the string literal:
+In python2 you had to handle unicode characters specially, fortunately in
+python3 unicode is supported by default. As English speakers we don't worry too
+much about accents and other special characters, but they do crop up in place
+and people's names. You can insert unicode characters using your keyboard (if
+you know how to type it) or using the octal (\u018e) or hex (\xf1) code which
+are easy to look up on the internet. Llanarmon-yn-Iâl is a village in  in Denbighshire, Wales if you were wondering.
 
-```python
-> ustring = u'A unicode \u018e string \xf1'
-> ustring
-u'A unicode \u018e string \xf1'
-> print ustring
+See the [python documentation](https://docs.python.org/3/howto/unicode.html) for
+a longer discussion of unicode's development and how python uses it.
+ 
+```console
+> place="Llanarmon-yn-Iâl"
+> print(place)
+Llanarmon-yn-Iâl
+> place="Llanarmon-yn-I\u00E2l"
+> print(place)
+Llanarmon-yn-Iâl
+>
+> string = 'A unicode \u018e string \xf1'
+> print(string)
 A unicode Ǝ string ñ
+
 ```
 
-A unicode string is a different type of object from regular "str"
-string, but the unicode string is compatible (they share the common
-superclass "basestring"), and the various libraries such as regular
-expressions work correctly if passed a unicode string instead of a
-regular string.
-
-To convert a unicode string to bytes with an encoding such as 'utf-8',
-call the ustring.encode('utf-8') method on the unicode string. Going the
-other direction, the unicode(s, encoding) function converts encoded
-plain bytes to a unicode string:
-
-```python
-> s = ustring.encode('utf-8')
-> s
-'A unicode \xc6\x8e string \xc3\xb1'  ## bytes of utf-8 encoding
-> t = unicode(s, 'utf-8')             ## Convert bytes back to a unicode string
-> t == ustring                      ## It's the same as the original, yay!
-True
-```
-
-The built-in print does not work fully with unicode strings. You can
-encode() first to print in utf-8 or whatever. In the file-reading
-section, there's an example that shows how to open a text file with some
-encoding and read out unicode strings. Note that unicode handling is one
-area where Python 3 is significantly cleaned up vs. Python 2.x
-behavior described here.
 
 If Statement
 ------------
 
 Python does not use { } to enclose blocks of code for if/loops/function
-etc.. Instead, Python uses the colon (:) and indentation/whitespace to
-group statements. The boolean test for an if does not need to be in
-parenthesis, and it can have `elif` and
-`else` clauses (mnemonic: the word `elif` is the same length as the
-word `else`).
+etc.. Instead, Python uses the colon (:) and indentation/whitespace
+to group statements. The boolean test for an if does not need to be
+in parenthesis, and it can have `elif` and `else` clauses (mnemonic:
+the word `elif` is the same length as the word `else`).
 
 Any value can be used as an if-test. The "zero" values all count as
-`false`: `None`, `0`, `''`, empty list `[]`, empty dictionary `{}`. There is
-also a Boolean type with two values: `True` and `False` (converted to an
-int, these are `1` and `0`).
+`false`: `None`, `0`, `''`, empty list `[]`, empty dictionary `{}`,
+anything else is true. There is also a Boolean type with two values:
+`True` and `False` (converted to an integer, these are `1` and `0`).
 
 Python has the usual comparison operations: `==`,
-`!=`, `<`, `<=`, `>`, `>=`.
+`!=`, `<`, `<=`, `>`, `>=`. That is equals, not equals, less than, less than or
+equal to, greater than, and greater than or equal to.
 
 The boolean operators are the spelled out
 words `and`, `or`, `not` (Python does not use the C-style `&&` `||`
@@ -291,7 +290,7 @@ if speed >= 80:
 I find that omitting the ":" is my most common syntax mistake when
 typing in the above sort of code, probably since that's an additional
 thing to type vs. my C++/Java habits. Also, don't put the boolean test
-in parens -- that's a C/Java habit. If the code is short, you can put
+in brackets -- that's a C/Java habit. If the code is short, you can put
 the code on the same line after ":", like this (this applies to
 functions, loops, etc. also), although some people feel it's more
 readable to space things out on separate lines.
@@ -314,5 +313,4 @@ Except as otherwise noted, the content of this page is licensed under
 the [Creative Commons Attribution 3.0
 License](http://creativecommons.org/licenses/by/3.0/), and code samples
 are licensed under the [Apache 2.0
-License](http://www.apache.org/licenses/LICENSE-2.0). For details, see
-our [Site Policies](https://developers.google.com/terms/site-policies).
+License](http://www.apache.org/licenses/LICENSE-2.0). 

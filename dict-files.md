@@ -4,7 +4,8 @@ Python Dict and File
 Dict Hash Table
 ---------------
 
-Python's efficient key/value hash table structure is called a `dict`.
+Python's efficient key/value hash table structure is called a `dict` (its like a
+dictionary).
 The contents of a dict can be written as a series of `key:value` pairs
 within braces `{ }`, e.g. `dict = {key1:value1, key2:value2, ... }`. The
 "empty dict" is just an empty pair of curly braces `{}`.
@@ -20,7 +21,7 @@ a `KeyError` -- use `in` to check if the key is in the dict, or use
 the not-found case).
 
 ```python
-## Can build up a dict by starting with the the empty dict {}
+## Can build up a dict by starting with the empty dict {}
 ## and storing key/value pairs into the dict like this:
 ## dict[key] = value-for-that-key
 
@@ -29,23 +30,23 @@ d['a'] = 'alpha'
 d['g'] = 'gamma'
 d['o'] = 'omega'
 
-print d
+print(d)
 
 # Access the value associated with the key 'a'
 print d['a']
 
 # Update the value associated with key 'a'
 d['a'] = 'amy'
-print d['a']
+print(d['a'])
 
 # Does the dict contain the key 'a'?
 'a' in d
 
-print d['z']                     ## Throws KeyError
+print(d['z'])                    ## Throws KeyError
 
 if 'z' in d: print d['z']        ## Avoid KeyError
-print d.get('z')                 ## None (instead of KeyError)
-print d.get('z', '')             ## Empty string (instead of None)
+print(d.get('z'))                ## None (instead of KeyError)
+print(d.get('z', ''))            ## Empty string (instead of None)
 ```
 
 ![dict with keys 'a' 'o' 'g'](images/dict.png)
@@ -64,39 +65,32 @@ d = {'a': 'alpha', 'o': 'omega', 'g': 'gamma'}
 ## By default, iterating over a dict iterates over its keys.
 ## Note that the keys are in a random order.
 for key in d:
-    print key
+    print(key)
 
 ## Exactly the same as above
 for key in d.keys():
-    print key
+    print(key)
 
 ## Get the .keys() list:
-print d.keys()  ## ['a', 'o', 'g']
+print(d.keys()) ## ['a', 'o', 'g']
 
 ## Likewise, there's a .values() list of values
-print d.values()  ## ['alpha', 'omega', 'gamma']
+print(d.values()) ## ['alpha', 'omega', 'gamma']
 
 ## Common case -- loop over the keys in sorted order,
 ## accessing each key/value
 for key in sorted(d.keys()):
-    print key, d[key]
+    print(key, d[key])
 
 ## .items() is the d expressed as (key, value) tuples
-print d.items()  ##  [('a', 'alpha'), ('o', 'omega'), ('g', 'gamma')]
+print(d.items())  ##  [('a', 'alpha'), ('o', 'omega'), ('g', 'gamma')]
 
 ## This loop syntax accesses the whole dict by looping
 ## over the .items() tuple list, accessing one (key, value)
 ## pair on each iteration.
 for k, v in d.items():
-    print k, '>', v
+    print(k, '>', v)
 ```
-
-There are "iter" variants of these methods called iterkeys(),
-itervalues() and iteritems() which avoid the cost of constructing the
-whole list -- a performance win if the data is huge. However, I
-generally prefer the plain keys() and values() methods with their
-sensible names. In Python 3 revision, the need for the iterkeys()
-variants is going away.
 
 Strategy note: from a performance point of view, the dictionary is one
 of your greatest tools, and you should use it where you can as an easy
@@ -110,7 +104,7 @@ scattered data and makes it into something coherent.
 Dict Formatting
 ---------------
 
-The % operator works conveniently to substitute values from a dict into
+The `%` operator works conveniently to substitute values from a dict into
 a string by name:
 
 ```python
@@ -118,7 +112,7 @@ hash = {}
 hash['word'] = 'garfield'
 hash['count'] = 42
 s = 'I want %(count)d copies of %(word)s' % hash
-print s
+print(s)
 ```
 
 Del
@@ -136,29 +130,27 @@ del num  # num no more!
 list = ['a', 'b', 'c', 'd']
 del list[0]     ## Delete first element
 del list[-2:]   ## Delete last two elements
-print list      ## ['b']
+print(list)     ## ['b']
 
 d = {'a':1, 'b':2, 'c':3}
 del d['b']   ## Delete 'b' entry
-print d      ## {'a':1, 'c':3}
+print(d)     ## {'a':1, 'c':3}
 ```
 
 Files
 -----
 
-The `open()` function opens and returns a file handle that can be used to read
-or write a file in the usual way. The code `f = open('foo.txt', 'r')` opens the
-file into the variable `f`, ready for reading operations, and use `f.close()`
-when finished. The `'r'` stands for the read "mode", instead of `'r'`, use
-`'w'` for writing, and `'a'` for append. Python's file objects can now support end of line conventions other than the one followed by the platform on which Python is running. Opening a file with the mode 'U' or 'rU' will open a file for reading in universal newline mode.
+The `open()` function opens and returns a file handle that can be used
+to read or write a file in the usual way. The code `f = open('foo.txt',
+'r')` opens the file into the variable `f`, ready for reading operations,
+and use `f.close()` when finished. The `'r'` stands for the read "mode",
+instead of `'r'`, use `'w'` for writing, and `'a'` for append. Python's
+file objects can now support end of line conventions other than the one
+followed by the platform on which Python is running. Opening a file
+with the mode 'U' or 'rU' will open a file for reading in universal
+newline mode.
 
 For a full list of modes see this [StackOverFlow question](https://stackoverflow.com/a/23566951/526860)
-
-As of Python 2.6 the recommended way of working with files is via the `io`
-module which has an
-[`io.open`](https://docs.python.org/2/library/io.html#io.open) function which
-can be used in place of the `open` function. The main advantage of `io.open` is
-that it handles working with encoded files.
 
 The standard for-loop works for text files, iterating through the lines of the
 file (this works only for text files, not binary files). The for-loop technique
@@ -166,13 +158,30 @@ is a simple and efficient way to look at all the lines in a text file:
 
 ```python
 # Print the contents of a file
-import io
-f = io.open('foo.txt')
+f = open('foo.txt')
 for line in f:
-    print line,
+    print(line)
 
 f.close()
 ```
+Note the line `f.close()` which tells python that we are finished with the file
+and it can let it go. This is important as operating systems have a limit the 
+number of files that they can have open at the same time, it is especially
+important if you are using Windows as it will not let anyone else interact with
+that file while you have it open. This can lead to nasty bugs in production code
+that are hard to find in your tests, which typically don't open a lot of files.
+To help with these problems, python provides the `with` keyword this makes sure
+that the file is closed when you have read all of it, even if an exception
+occurs.
+
+```python
+with open('foo.txt') as f:
+    for line in f:
+        print(line)
+
+f.closed
+```
+
 
 Reading one line at a time has the nice quality that not all the file
 needs to fit in memory at one time -- handy if you want to look at every
@@ -187,30 +196,29 @@ an open output file.
 
 ```python
 # Add some lines to a file
-import io
-f = io.open('foo.txt', 'a')
-f.write(u'Yet another line\n')
-f.write(u'And another!\n')
-f.close()
+with open('foo.txt', 'a') as f:
+  f.write(u'Yet another line\n')
+  f.write(u'And another!\n')
 ```
 
 Files Unicode
 -------------
 
-The `io.open` function supports reading encoded files including unicode. The encoding of the file must be specified via the `encoding` parameter.
+As with strings reading and writing unicode used to be hard to handle in 
+python2, in python3 UTF-8 is the default encoding so most of the time you will
+not need to specify an encoding. Sometimes you may need to use something like `open(fname,
+encoding="latin-1")` to specify a different encoding (especially if you get
+files from Windows users).
 
 ```python
-import io
 
-f = io.open('foo.html', 'w', encoding='UTF-8')
-f.write(u"\U0001F383" * 10)
-f.close()
+with open('foo.html', 'w') as f:
+  f.write(u"\U0001F383" * 10)
 
-f = io.open('foo.html', encoding='UTF-8')
-for line in f:
+with open('foo.html') as f:
+  for line in f:
     print line,
 
-f.close()
 ```
 
 Exercise Incremental Development

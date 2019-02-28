@@ -7,15 +7,12 @@ original list is not changed.
 
 ```python
 a = [5, 1, 4, 3]
-print sorted(a)  ## [1, 3, 4, 5]
-print a  ## [5, 1, 4, 3]
+print(sorted(a))  ## [1, 3, 4, 5]
+print(a)  ## [5, 1, 4, 3]
 ```
 
 It's most common to pass a list into the `sorted()` function, but in fact
-it can take as input any sort of iterable collection. The older
-`list.sort()` method is an alternative detailed below. The `sorted()`
-function seems easier to use compared to `sort()`, so I recommend using
-`sorted()`.
+it can take as input any sort of iterable collection. 
 
 The `sorted()` function can be customized though optional arguments. The
 `sorted()` optional argument `reverse=True`, e.g. `sorted(list,
@@ -23,8 +20,8 @@ reverse=True)`, makes it sort backwards.
 
 ```python
 strs = ['aa', 'BB', 'zz', 'CC']
-print sorted(strs)  ## ['BB', 'CC', 'aa', 'zz'] (case sensitive)
-print sorted(strs, reverse=True)   ## ['zz', 'aa', 'CC', 'BB']
+print(sorted(strs))  ## ['BB', 'CC', 'aa', 'zz'] (case sensitive)
+print(sorted(strs, reverse=True))   ## ['zz', 'aa', 'CC', 'BB']
 ```
 
 ### Custom Sorting With key=
@@ -41,7 +38,7 @@ values, and the sorts with those proxy values.
 
 ```python
 strs = ['ccc', 'aaaa', 'd', 'bb']
-print sorted(strs, key=len)  ## ['d', 'bb', 'ccc', 'aaaa']
+print(sorted(strs, key=len))  ## ['d', 'bb', 'ccc', 'aaaa']
 ```
 
 ![calling sorted with
@@ -53,7 +50,7 @@ to force the sorting to treat uppercase and lowercase the same:
 ```python
 # "key" argument specifying str.lower function to use for sorting
 strs = ['aa', 'BB', 'zz', 'CC']
-print sorted(strs, key=str.lower)  ## ['aa', 'BB', 'CC', 'zz']
+print(sorted(strs, key=str.lower))  ## ['aa', 'BB', 'CC', 'zz']
 ```
 
 You can also pass in your own function as the key function, like this:
@@ -68,7 +65,7 @@ def last_item(s):
     return s[-1]
 
 ## Now pass key=last_item to sorted() to sort by the last letter:
-print sorted(strs, key=last_item)  ## ['wa', 'zb', 'xc', 'yd']
+print(sorted(strs, key=last_item))  ## ['wa', 'zb', 'xc', 'yd']
 ```
 
 To use `key=` custom sorting, remember that you provide a function that
@@ -80,27 +77,37 @@ built in comparison function for strings, ints, ... is cmp(a, b), so
 often you want to call cmp() in your custom comparator. The newer one
 argument key= sorting is generally preferable.
 
-### sort() method
+### Lambdas (Optional, Advanced)
 
-As an alternative to sorted(), the sort() method on a list sorts that
-list into ascending order, e.g. list.sort(). The sort() method changes
-the underlying list and returns None, so use it like this:
+In the previous example we had to create a small function `last_item` to get the
+last character of the strings and return that to the `sorted` function to use as
+the key for the sort. This is perfectly valid python but it looks a little
+untidy and eventually your program can be cluttered up with lots of little
+functions that carry out very simple tasks but have no relevance to your actual
+aim. This is where lambdas come in.
+
+A lambda is a small function that you can define with out a name, it can take
+any number of arguments, but can have only one expression. 
+
+The syntax of a lambda expression is:
+
+    lambda arguments : expression
+
+A lambda function can be allocated to a variable (like any python function, in
+fact) and then reused anywhere in your program.
 
 ```python
-list = [2, 0, 1]
-list.sort()
-print list
-
-list1 = list.sort()    ## NO incorrect, sort() returns None
+x=lambda a : a + 10
+print(x(5)) ## 15
 ```
+So a lambda is exactly what you are looking for when you need a simple, quick,
+throw away function for your custom sort key. 
 
-The above is a very common misunderstanding with sort() -- it **does not
-return** the sorted list. The sort() method must be called on a list; it
-does not work on any enumerable collection (but the sorted() function
-above works on anything). The sort() method predates the sorted()
-function, so you will likely see it in older code. The sort() method
-does not need to create a new list, so it can be a little faster in the
-case that the elements to sort are already in a list.
+```python
+print(sorted(strs, key=lambda s:s[-1]))  ## ['wa', 'zb', 'xc', 'yd']
+```
+There are many more uses for lambdas but they are outside the scope of this
+course. 
 
 Tuples
 ------
@@ -123,8 +130,8 @@ Accessing the elements in a tuple is just like a list -- `len()`, `[ ]`,
 
 ```python
 tuple = (1, 2, 'hi')
-print len(tuple)  ## 3
-print tuple[2]    ## hi
+print(len(tuple))  ## 3
+print(tuple[2])    ## hi
 tuple[2] = 'bye'  ## NO, tuples cannot be changed
 tuple = (1, 2, 'bye')  ## this works
 ```
@@ -136,10 +143,11 @@ tuple = ('hi',)   ## size-1 tuple
 ```
 
 It's a funny case in the syntax, but the comma is necessary to
-distinguish the tuple from the ordinary case of putting an expression in
-parentheses. In some cases you can omit the parenthesis and Python will
-see from the commas that you intend a tuple. This will also cause mysterious 
-errors relating to unexpected tuples if you accidently leave a comma at the end of a line.
+distinguish the tuple from the ordinary case of putting an expression
+in parentheses. In some cases you can omit the parenthesis and Python
+will see from the commas that you intend a tuple. This will also cause
+mysterious errors relating to unexpected tuples if you accidentally
+leave a comma at the end of a line.
 
 Assigning a tuple to an identically sized tuple of variable names
 assigns all the corresponding values. If the tuples are not the same
@@ -187,15 +195,15 @@ nums = [2, 8, 1, 6]
 small = [ n for n in nums if n <= 2 ]  ## [2, 1]
 
 ## Select fruits containing 'a', change to upper case
-fruits = ['apple', 'cherry', 'bannana', 'lemon']
+fruits = ['apple', 'cherry', 'banana', 'lemon']
 afruits = [ s.upper() for s in fruits if 'a' in s ]
-## ['APPLE', 'BANNANA']
+## ['APPLE', 'BANANA']
 ```
 
 Exercise: list1.py
 ------------------
 
-To practice the material in this section, try later problems in
+To practice the material in this section, try the later problems in
 **list1.py** that use sorting and tuples (in the [Basic
 Exercises](basic)).
 
@@ -205,5 +213,4 @@ Except as otherwise noted, the content of this page is licensed under
 the [Creative Commons Attribution 3.0
 License](http://creativecommons.org/licenses/by/3.0/), and code samples
 are licensed under the [Apache 2.0
-License](http://www.apache.org/licenses/LICENSE-2.0). For details, see
-our [Site Policies](https://developers.google.com/terms/site-policies).
+License](http://www.apache.org/licenses/LICENSE-2.0). 
