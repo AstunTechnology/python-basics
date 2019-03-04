@@ -34,70 +34,43 @@ Most operating systems other than Windows already have Python installed
 by default. To check that Python is installed, open a command line
 (typically by running the "Terminal" program), and cd to the
 google-python-exercises directory. Try the following to run the hello.py
-program (what you type is shown in bold):
+program (what you see here is what you type):
 
-    ~/google-python-exercises$ python hello.py
+    python3 hello.py
+
+  You will see:
+
     Hello World
-    ~/google-python-exercises$ python hello.py Alice
+
+  type:
+
+    python3 hello.py Alice
+
+  see:
+
     Hello Alice
 
 If python is not installed, see the [Python.org
 download](http://python.org/download) page. To run the Python
-interpreter interactively, just type "python" in the terminal:
+interpreter interactively, just type "python3" (eventially everyone will switch
+over to Python3 and the command will become just "python") in the terminal:
 
-    ~/google-python-exercises$ python
-    Python 2.7.12 (default, Nov 19 2016, 06:48:10) 
-    [GCC 5.4.0 20160609] on linux2
+    python3
+
+and you will see this header and can then type in your own commands and
+see the results:
+
+    Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+    [GCC 8.2.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
-    >>> 1 + 1
+    >>> 1+1
     2
-    >>> you can type expressions here .. use ctrl-d to exit
+    >>>
 
-For this course, you want a python version that is 2.7 or later.
+Type ctrl-z (on windows) or ctrl-d (on linux/macs) to exit.
 
-### Execute Bit (optional)
-
-The commands above are the simplest way to run python programs. If the
-"execute bit" is set on a .py file, it can be run by name without having
-to type "python" first. Set the execute bit with the "chmod" command
-like this:
-
-    ~/google-python-exercises$ chmod +x hello.py
-    ~/google-python-exercises$ ./hello.py   ## now can run it as ./hello.py
-    Hello World
-
-Python on Windows
------------------
-
-Doing a basic Python install on Windows is easy:
-
--   Go to the [python.org download](http://www.python.org/download/)
-    page, select a version such as 2.7. Google's Python Class should
-    work with any version 2.7.
--   Run the Python installer, taking all the defaults. This will install
-    Python in the root directory and set up some file associations.
-
-With Python installed, open a command prompt (Accessories &gt; Command
-Prompt, or type 'cmd' into the run dialog). Cd to the
-google-python-exercises directory (from unzipping
-google-python-exercises.zip). You should be able to run the hello.py
-python program by typing "python" followed by "hello.py" (what you type
-is shown in bold):
-    C:\google-python-exercises> python hello.py
-    Hello World
-    C:\google-python-exercises> python hello.py Alice
-    Hello Alice
-
-If this works, Python is installed. Otherwise, see [Python Windows
-FAQ](http://www.python.org/doc/faq/windows/) for help.
-
-To run the Python interpreter interactively, select the Run... command
-from the Start menu, and type "python" -- this will launch Python
-interactively in its own window. On Windows, use Ctrl-Z to exit (on all
-other operating systems it's Ctrl-D to exit).
-
-Editing Python (all operating systems)
---------------------------------------
+Editing Python 
+--------------
 
 A Python program is just a text file that you edit directly. As above,
 you should have a command line open, where you can type "python hello.py
