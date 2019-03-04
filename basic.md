@@ -9,10 +9,15 @@ if you have not already (see the
 [Set-Up](set-up) page for
 details).
 
-**string1.py** -- complete the string functions in string1.py, based on
-the material in the [Python
-Strings](strings) section
-(additional exercises available in string2.py)
+In all of the following you can see how you are doing by running the file, e.g.
+`python3 string1.py` - the `manin` method will run some tests and print out if
+your code produces the right answer. Look for the string `# +++your code here+++` 
+and replace it with your code, **save the file** and run it again to see if you
+are getting closer.
+
+**string1.py** -- complete the string functions in string1.py, based
+on the material in the [Python Strings](strings) section (additional
+exercises available in string2.py)
 
 **list1.py** -- complete the list functions in list1.py, based on the
 material in the [Python
@@ -36,4 +41,4 @@ the [Creative Commons Attribution 3.0
 License](http://creativecommons.org/licenses/by/3.0/), and code samples
 are licensed under the [Apache 2.0
 License](http://www.apache.org/licenses/LICENSE-2.0). For details, see
-our [Site Policies](https://developers.google.com/terms/site-policies).
+our [Site Policies](https://developers.google.com/terms/site-policies.
