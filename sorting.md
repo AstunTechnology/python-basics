@@ -155,7 +155,7 @@ size, it throws an error. This feature works for lists too.
 
 ```python
 (x, y, z) = (42, 13, "hike")
-print z  ## hike
+print(z)  ## hike
 (err_string, err_code) = Foo()  ## Foo() returns a length-2 tuple
 ```
 

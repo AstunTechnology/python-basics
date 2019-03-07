@@ -278,13 +278,13 @@ and the statements are grouped by their indentation:
 
 ```python
 if speed >= 80:
-    print 'License and registration please'
+    print('License and registration please')
     if mood == 'terrible' or speed >= 100:
-        print 'You have the right to remain silent.'
+        print('You have the right to remain silent.')
     elif mood == 'bad' or speed >= 90:
-        print "I'm going to have to write you a ticket."
+        print("I'm going to have to write you a ticket.")
     else:
-        print "Let's try to keep it under 80 ok?"
+        print("Let's try to keep it under 80 ok?")
 ```
 
 I find that omitting the ":" is my most common syntax mistake when
@@ -296,8 +296,8 @@ functions, loops, etc. also), although some people feel it's more
 readable to space things out on separate lines.
 
 ```python
-if speed >= 80: print 'You are so busted'
-else: print 'Have a nice day'
+if speed >= 80: print('You are so busted')
+else: print('Have a nice day')
 ```
 
 Exercise: string1.py

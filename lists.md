@@ -9,9 +9,9 @@ docs](http://docs.python.org/tut/node7.html).)
 
 ```python
   colors = ['red', 'blue', 'green']
-  print colors[0]    ## red
-  print colors[2]    ## green
-  print len(colors)  ## 3
+  print(colors[0])    ## red
+  print(colors[2])    ## green
+  print(len(colors))  ## 3
 ```
 
 ![list of strings 'red' 'blue
@@ -34,8 +34,8 @@ is just like + with strings).
 FOR and IN
 ----------
 
-Python's \*for\* and \*in\* constructs are extremely useful, and the
-first use of them we'll see is with lists. The \*for\* construct --
+Python's *for* and *in* constructs are extremely useful, and the
+first use of them we'll see is with lists. The *for* construct --
 `for var in list` -- is an easy way to look at each element in a list
 (or other collection). Do not add or remove from the list during
 iteration.
@@ -46,7 +46,7 @@ sum = 0
 for num in squares:
     sum += num
 
-print sum  ## 30
+print(sum)  ## 30
 ```
 
 If you know what sort of thing is in the list, use a variable name in
@@ -55,7 +55,7 @@ the loop that captures that information such as "num", or "name", or
 types, your variable names are a key way for you to keep straight what
 is going on.
 
-The \*in\* construct on its own is an easy way to test if an element
+The *in* construct on its own is an easy way to test if an element
 appears in a list (or other collection) -- `value in collection` --
 tests if the value is in the collection, returning True/False.
 
@@ -70,7 +70,7 @@ You may have habits from other languages where you start manually
 iterating over a collection, where in Python you should just use for/in.
 
 You can also use for/in to work on a string. The string acts like a list
-of its chars, so `for ch in s: print ch` prints all the chars in a
+of its chars, so `for ch in s: print(ch)` prints all the chars in a
 string.
 
 ### Range
@@ -83,13 +83,8 @@ a traditional numeric for loop:
 ```python
 ## print the numbers from 0 through 99
 for i in range(100):
-    print i
+    print(i)
 ```
-
-There is a variant xrange() which avoids the cost of building the whole
-list for performance sensitive cases (in Python 3, `range()` will have
-the good performance behavior and you can forget about `xrange()`).
-
 ### While Loop
 
 Python also has the standard while-loop, and the *break* and
@@ -104,7 +99,7 @@ every 3rd element in a list:
 i = 0
 nums = range(100)
 while i < len(nums):
-    print nums[i]
+    print(nums[i])
     i = i + 3
 ```
 
@@ -139,23 +134,23 @@ l = ['larry', 'curly', 'moe']
 l.append('shemp')         ## append elem at end
 l.insert(0, 'xxx')        ## insert elem at index 0
 l.extend(['yyy', 'zzz'])  ## add list of elems at end
-print l  ## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']
-print l.index('curly')    ## 2
+print(l)  ## ['xxx', 'larry', 'curly', 'moe', 'shemp', 'yyy', 'zzz']
+print(l.index('curly'))    ## 2
 
 l.remove('curly')         ## search and remove that element
 l.pop(1)                  ## removes and returns 'larry'
-print l  ## ['xxx', 'moe', 'shemp', 'yyy', 'zzz']
+print(l)  ## ['xxx', 'moe', 'shemp', 'yyy', 'zzz']
 ```
 
-Common error: note that the above methods do not \*return\* the modified
+Common error: note that the above methods do not *return* the modified
 list, they just modify the original list.
 
 ```python
 l = [1, 2, 3]
-print l.append(4)   ## NO, does not work, append() returns None
+print(l.append(4))   ## NO, does not work, append() returns None
 ## Correct pattern:
 l.append(4)
-print l  ## [1, 2, 3, 4]
+print(l)  ## [1, 2, 3, 4]
 ```
 
 ### List Build Up
@@ -176,9 +171,9 @@ change sub-parts of the list.
 
 ```python
 l = ['a', 'b', 'c', 'd']
-print l[1:-1]   ## ['b', 'c']
+print(l[1:-1])   ## ['b', 'c']
 l[0:2] = 'z'    ## replace ['a', 'b'] with ['z']
-print l         ## ['z', 'c', 'd']
+print(l)         ## ['z', 'c', 'd']
 ```
 
 Exercise: list1.py
