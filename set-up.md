@@ -123,7 +123,7 @@ To try out your editor, edit the the hello.py program. Change the word
 "Hello" in the code to the word "Howdy" (you don't need to understand
 all the other Python code in there ... we'll explain it all in class).
 Save your edits and run the program to see its new output. Try adding a
-"print 'yay!'" just below the existing print and with the same
+"print('yay!')" just below the existing print and with the same
 indentation. Try running the program, to see that your edits work
 correctly. For class we want an edit/run workflow that allows you to
 switch between editing and running easily.

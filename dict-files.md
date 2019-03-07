@@ -33,7 +33,7 @@ d['o'] = 'omega'
 print(d)
 
 # Access the value associated with the key 'a'
-print d['a']
+print(d['a'])
 
 # Update the value associated with key 'a'
 d['a'] = 'amy'
@@ -44,7 +44,7 @@ print(d['a'])
 
 print(d['z'])                    ## Throws KeyError
 
-if 'z' in d: print d['z']        ## Avoid KeyError
+if 'z' in d: print(d['z'])       ## Avoid KeyError
 print(d.get('z'))                ## None (instead of KeyError)
 print(d.get('z', ''))            ## Empty string (instead of None)
 ```
@@ -217,7 +217,7 @@ with open('foo.html', 'w') as f:
 
 with open('foo.html') as f:
   for line in f:
-    print line,
+    print(line,end=' ')
 
 ```
 
