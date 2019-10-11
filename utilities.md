@@ -133,10 +133,8 @@ The module *requests* provides url fetching -- making a url look like a
 file you can read from. While *Requests-html* makes parsing HTML as simple as
 possible.
 
--   [requests module](http://docs.python-requests.org/en/master/#)
-    [docs](http://docs.python-requests.org/en/master/api/)
--   [requests-html module](https://html.python-requests.org/)
-    [docs](https://html.python-requests.org/#api-documentation)
+-   [requests module](http://requests.kennethreitz.org/en/master/)
+-   [requests-html module](http://requests-html.kennethreitz.org/)
 -   `r = requests.get('https://api.github.com/events')` -- returns a response object for that
     url
 -   `text = r.text` -- get the contents of the page.
