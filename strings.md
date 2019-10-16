@@ -220,6 +220,16 @@ into the string where items are indicated by `%type` sections.
 
 ```
 
+The variable placeholders in a string template can also be formatted for display; for example you might wish to format a `float` value to show 2 decimal places:
+
+```python
+> import math
+> f"pi to 3 decimal places is {math.pi:.3f}"
+'pi to 3 decimal places is 3.142'
+```
+
+See the [Python string documentation for formatting examples](https://docs.python.org/3/library/string.html#format-examples).
+
 Python also provides a [full string
 formatter](https://docs.python.org/3/library/string.html#string-formatting)
 if you need to carry out type conversions of your variables but you are
