@@ -1,5 +1,7 @@
-Python Strings
+Python Types
 ==============
+
+## Strings
 
 Python has a built-in string class named "str" with many handy features.
 String literals can be enclosed by either double or single quotes, although
@@ -69,9 +71,9 @@ text = 'The value of pi is ' + pi        ## No, does not work
 text = 'The value of pi is '  + str(pi)  ## Yes
 ```
 
-### Numbers
+## Numbers
 
-For numbers, the standard operators, `+`, `/`, `*` work in the usual way.
+For numbers, the standard operators, `+`, `-`, `/`, `*` work in the usual way.
 There is no `++` operator (don't worry if you don't know what that is), 
 but `+=`, `-=`, etc. work (they add or subtract the right hand side
 to the left hand). If you want integer division, it is most correct to
@@ -81,7 +83,7 @@ the preferred way to indicate that you want int division.) You use `%`
 to get the remainder (modulo) of an integer division, so `6%5` is `1`
 for the remanider of `6//5`.
 
-### Printing
+# Printing
 
 The "print" operator prints out one or more python items followed by a
 newline (leave a trailing comma at the end of the items to inhibit the
@@ -104,7 +106,7 @@ multi = """It was the best of times.
 It was the worst of times."""
 ```
 
-### String Methods
+## String Methods
 
 Here are some of the most common string methods. A method is like a
 function, but it runs "on" an object. If the variable `s` is a string,
@@ -146,7 +148,7 @@ that string-length-1, the operators `==`, `<=`, ... all work as you would
 expect, so mostly you don't need to know that Python does not have a
 separate `char` type.
 
-### String Slices
+## String Slices
 
 The "slice" syntax is a handy way to refer to sub-parts of sequences --
 typically strings and lists. The slice `s[start:end]` is the elements
@@ -242,7 +244,8 @@ python3 unicode is supported by default. As English speakers we don't worry too
 much about accents and other special characters, but they do crop up in place
 and people's names. You can insert unicode characters using your keyboard (if
 you know how to type it) or using the octal (\u018e) or hex (\xf1) code which
-are easy to look up on the internet. Llanarmon-yn-Iâl is a village in  in Denbighshire, Wales if you were wondering.
+are easy to look up on the internet. Llanarmon-yn-Iâl is a village in 
+Denbighshire, Wales if you were wondering.
 
 See the [python documentation](https://docs.python.org/3/howto/unicode.html) for
 a longer discussion of unicode's development and how python uses it.
@@ -262,8 +265,7 @@ A unicode Ǝ string ñ
 ```
 
 
-If Statement
-------------
+# If Statement
 
 Python does not use { } to enclose blocks of code for if/loops/function
 etc.. Instead, Python uses the colon (:) and indentation/whitespace
