@@ -52,7 +52,7 @@ single chars:
 
 -   `a`, `X`, `9`, `<` -- ordinary characters just match themselves exactly.
     The meta-characters which do not match themselves because they have
-    special meanings are: `. \^ \$ \* + ? { \[ \] \\ | ( )`
+    special meanings are: `. ^ $ * + ? { [ ] \ | ( )`
     (details below)
 -   `.` (a period) -- matches any single character except newline '\\n'
 -   `\w` -- (lowercase w) matches a "word" character: a letter or digit
@@ -193,8 +193,8 @@ if match:
 
 (More square-bracket features) You can also use a dash to indicate a
 range, so `[a-z]` matches all lowercase letters. To use a dash without
-indicating a range, put the dash last, e.g. `[abc-]`. An caret (up-hat) (`^`) at
-the start of a square-bracket set inverts it, so `[^ab]` means any char
+indicating a range, put the dash last, e.g. `[abc-]`. A caret (up-hat) (`^`) at
+the start of a square-bracket set inverts it, so `[^ab]` means any character
 except 'a' or 'b'.
 
 Group Extraction

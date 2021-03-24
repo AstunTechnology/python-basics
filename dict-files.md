@@ -197,8 +197,8 @@ an open output file.
 ```python
 # Add some lines to a file
 with open('foo.txt', 'a') as f:
-  f.write(u'Yet another line\n')
-  f.write(u'And another!\n')
+  f.write('Yet another line\n')
+  f.write('And another!\n')
 ```
 
 Files Unicode
@@ -213,7 +213,7 @@ files from Windows users).
 ```python
 
 with open('foo.html', 'w') as f:
-  f.write(u"\U0001F383" * 10)
+  f.write("\U0001F383" * 10)
 
 with open('foo.html') as f:
   for line in f:
