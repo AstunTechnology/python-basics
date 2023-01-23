@@ -23,7 +23,7 @@ print('I didn\'t do it')
 A double quoted string literal can contain single quotes without any fuss (e.g.
 `"I didn't do it"`) and likewise single quoted string can contain double quotes.
 
-A string literal can span multiple lines, but there must be a backslash `\` at
+A string literal can span multiple lines, but there must be a backslash (`\ `) at
 the end of each line to escape the newline.  String literals inside triple
 quotes, `"""` or `'''`, can span multiple lines of text.
 
@@ -34,8 +34,8 @@ go to represent computed values. So for example the expression `'hello' +
 `'hellothere'`.
 
 Characters in a string can be accessed using the standard `[ ]` syntax,
-and like Java and C++, Python uses zero-based indexing, so if `str` is
-`'hello'` `str[1]` is `'e'`.
+and like Java and C++, Python uses zero-based indexing, so if `strng` is
+`'hello'` `strng[1]` is `'e'`.
 
 If the index is out of bounds for the string, Python raises an error. The
 Python style (unlike Perl) is to halt if it can't tell what to do, rather than
@@ -62,7 +62,7 @@ print(s + ' there')  ## hi there
 
 Unlike Java, the `+` does not automatically convert numbers or other
 types to string form. The `str()` function converts values to a string
-form so they can be combined with other strings (and is why `str` is not a good
+form so they can be combined with other strings (and this is why `str` is not a good
 variable name).
 
 ```python
@@ -73,27 +73,36 @@ text = 'The value of pi is '  + str(pi)  ## Yes
 
 ## Numbers
 
-For numbers, the standard operators, `+`, `-`, `/`, `*` work in the usual way.
-There is no `++` operator (don't worry if you don't know what that is), 
-but `+=`, `-=`, etc. work (they add or subtract the right hand side
-to the left hand). If you want integer division, it is most correct to
-use 2 slashes -- e.g. `6 // 5` is `1` (in Python 2, a single
-`/` does int division with ints anyway, but moving forward `//` is
-the preferred way to indicate that you want int division.) You use `%`
-to get the remainder (modulo) of an integer division, so `6%5` is `1`
-for the remanider of `6//5`.
+Numeric variables come in two flavours Integer and Floating Point (or Real). Integers are simple numbers 
+without any fractional part and in Python (unlike some other languages) can be as big as you like. Floating 
+Point numbers are any number with a fractional or decimal part (even if that part is `0`) so `1` is an integer 
+and `1.0` is a floating point number. Mostly python doesn't really care about what type of number you are 
+dealing with and will convert any integers to floats if it needs (by multiplying by `1.0`). 
 
-# Printing
+For numbers, the standard operators, `+`, `-`, `/`, `*` work in the usual way.
+There is no `++` operator (don't worry if you don't know what that is), but `+=`, `-=`, etc. do work, they add 
+or subtract the right hand side to the left hand.
+
+If you want integer division, it is necessary to
+use 2 slashes -- e.g. `6 // 5` is `1` while `6/5` is `1.2`.  You use `%`
+to get the remainder (modulo) of an integer division, so `6%5` is `1`
+for the remainder of `6//5`. This is a quick way of doing something every nth time in a loop, by checking if 
+`i%n == 0` (e.g `i%2==0` finds all the even `i`s), or more commonly `Not i%n`, as `0` is `False` and anything 
+else it `True`.
+
+### Printing
 
 The "print" operator prints out one or more python items followed by a
 newline (leave a trailing comma at the end of the items to inhibit the
 newline).
 
 A "raw" string literal is prefixed by an 'r' and passes all
-the chars through without special treatment of backslashes, so r'x\\nx'
-evaluates to the length-4 string 'x\\nx'. **Except** for `\"` (or `\'`) which are
-printed as `"` and `'`, so be careful with windows paths as `r"c:\temp\"` is not valid 
-as the `\` hides the final `"`, see this [stackoverflow question](https://stackoverflow.com/questions/647769/why-cant-pythons-raw-string-literals-end-with-a-single-backslash) for more explanation. 
+the chars through without special treatment of backslashes, so `r'x\\nx'`
+evaluates to the length-4 string `'x\\nx'`. **Except** for `\"` (or `\'`) which are
+printed as `"` and `'`, so be careful with windows paths as `r"c:\temp\"` is not valid as the `\ ` hides the 
+final `"`, see this [stackoverflow 
+question](https://stackoverflow.com/questions/647769/why-cant-pythons-raw-string-literals-end-with-a-single-backslash) 
+for more explanation. 
 
 ```python
 raw = r'this\t\n and that'
@@ -211,18 +220,9 @@ to it.
 >
 ```
 As you can see the variables' values are substituted into the string when it is
-used, so if you change a value you need to recreate the string. You will also
-see the alternative `%` operator which takes a tuple of values and inserts them
-into the string where items are indicated by `%type` sections.
-
-```python
-> s = "%d pigs little pigs come out or I'll %s and %s and %s" % (pigs,huff,puff,rest)
-> s
-"3 pigs little pigs come out or I'll huff and puff and blow your house down"
-
-```
-
-The variable placeholders in a string template can also be formatted for display; for example you might wish to format a `float` value to show 2 decimal places:
+used, so if you change a value you need to recreate the string.
+The variable placeholders in a string template can also be formatted for display; for example you might wish
+to format a `float` value to show 2 decimal places:
 
 ```python
 > import math
@@ -230,7 +230,17 @@ The variable placeholders in a string template can also be formatted for display
 'pi to 3 decimal places is 3.142'
 ```
 
-See the [Python string documentation for formatting examples](https://docs.python.org/3/library/string.html#format-examples).
+And if you are debugging a quick print statement for a variable can be done like this:
+
+~~~py
+>>> var = '\N{snake} \N{snowman}'
+>>> print(f"{var=}")
+var='🐍 ☃'
+>>>
+~~~
+
+See the [Python string documentation for formatting
+examples](https://docs.python.org/3/library/string.html#format-examples).
 
 Python also provides a [full string
 formatter](https://docs.python.org/3/library/string.html#string-formatting)
@@ -239,18 +249,17 @@ unlikely to need this in your day to day work.
 
 ### Unicode 😀
 
-In python2 you had to handle unicode characters specially, fortunately in
-python3 unicode is supported by default. As English speakers we don't worry too
+In python3 unicode is supported by default. As English speakers we don't worry too
 much about accents and other special characters, but they do crop up in place
 and people's names. You can insert unicode characters using your keyboard (if
-you know how to type it) or using the octal (\u018e) or hex (\xf1) code which
-are easy to look up on the internet. Llanarmon-yn-Iâl is a village in 
+you know how to type it (alt-gr-^a on my machine)) or using the full unicode (`\u00e2`) or hex (`\xe2`) code 
+which are easy to look up on the internet. Llanarmon-yn-Iâl is a village in 
 Denbighshire, Wales if you were wondering.
 
 See the [python documentation](https://docs.python.org/3/howto/unicode.html) for
 a longer discussion of unicode's development and how python uses it.
  
-```console
+```python
 > place="Llanarmon-yn-Iâl"
 > print(place)
 Llanarmon-yn-Iâl
@@ -261,8 +270,31 @@ Llanarmon-yn-Iâl
 > string = 'A unicode \u018e string \xf1'
 > print(string)
 A unicode Ǝ string ñ
+> print('\N{snake} \N{snowman}')
+🐍 ☃
 
 ```
+
+Indentation
+-----------
+
+One unusual Python feature is that the whitespace indentation of a piece
+of code affects its meaning. A logical block of statements such as the
+ones that make up a function should all have the same indentation, set
+in from the indentation of their parent function or "if" or whatever. If
+one of the lines in a group has a different indentation, it is flagged
+as a syntax error.
+
+Python's use of whitespace feels a little strange at first, but it's
+logical and I found I got used to it very quickly. Avoid using TABs as
+they greatly complicate the indentation scheme (not to mention TABs may
+mean different things on different platforms). Set your editor to insert
+spaces instead of TABs for Python code. 
+
+A common question beginners ask is, "How many spaces should I indent?"
+According to [the official Python style guide (PEP
+8)](http://python.org/dev/peps/pep-0008/#indentation), you should indent
+with 4 spaces.
 
 
 # If Statement
@@ -284,7 +316,7 @@ equal to, greater than, and greater than or equal to.
 
 The boolean operators are the spelled out
 words `and`, `or`, `not` (Python does not use the C-style `&&` `||`
-`!`). Here's what the code might look like for a policeman pulling over a
+`!`). Here's what the algorithm might look like for a policeman pulling over a
 speeder -- notice how each block of then/else statements starts with a `:`
 and the statements are grouped by their indentation:
 
@@ -302,15 +334,200 @@ if speed >= 80:
 I find that omitting the ":" is my most common syntax mistake when
 typing in the above sort of code, probably since that's an additional
 thing to type vs. my C++/Java habits. Also, don't put the boolean test
-in brackets -- that's a C/Java habit. If the code is short, you can put
+in brackets -- that's a C/Java habit too. If the code is short, you can put
 the code on the same line after ":", like this (this applies to
-functions, loops, etc. also), although some people feel it's more
+functions, loops, etc. also), although most people feel it's more
 readable to space things out on separate lines.
 
 ```python
 if speed >= 80: print('You are so busted')
 else: print('Have a nice day')
 ```
+
+User-defined Functions
+----------------------
+
+Functions in Python are defined like this:
+
+```python
+# Defines a "repeat" function that takes 2 arguments.
+def repeat(s, exclaim):
+    result = s + s + s
+    if exclaim:
+        result = result + '!!!'
+    return result
+
+```
+
+Again, notice how the lines that make up the function and the if-statement are
+grouped by all having the same level of indentation.
+
+The `def` keyword defines the function with its parameters within
+parentheses and its code indented. The first line of a function can be a
+documentation string ("docstring") that describes what the function
+does. The docstring can be a single line, or a multi-line description as
+in the example above. (Yes, those are "triple quotes," a feature unique
+to Python!) Variables defined in the function are local to that
+function, so the "result" in the above function is separate from a
+"result" variable in another function. The `return` statement can take
+an argument, in which case that is the value returned to the caller.
+
+Here is code that calls the above repeat() function, printing what it
+returns:
+
+```python
+print(repeat('Yay', False))
+print(repeat('Woo Hoo', True))
+```
+
+Once you have defined a function (line `repeat`) it can be used in exactly the same way as a builtin python 
+function. You follow it's name with a pair of brackets ('()') which should contain any required parameters. At 
+run time, functions must be defined by the execution of a "`def`"
+before they are called.
+
+### Variable Scope 
+
+Scope is a fancy computer sciency way of saying who can see a variable. Essentially, a variable that is 
+created with in a block of code can't be seen outside that block. Here's an example:
+
+~~~python
+>>> def variable_test(v1):
+...     v2 = 100
+...     result = v1 + v2
+...     return result
+...
+>>> ian_var = 20
+>>> print(variable_test(ian_var))
+120
+>>> print(ian_var)
+20
+>>> print(v1,v2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'v1' is not defined
+>>>
+~~~
+
+So we define a function `variable_test` that takes a single argument (`v1`, in real code you should use a more 
+descriptive name). The function creates a second variable (`v2`) and saves the value `100` in it. It then adds 
+that value to the input parameter (`v1`) and stores that result in a variable called `result`. It then 
+`return`s that variable's value as the result of the function. So when we `print` the result of the function 
+(by calling the function in a `print` statement) we see the answer (`120` in this case). Note how the value of 
+`ian_var` is not changed and that we can't refer to either `v1` or `v2` outside of the block that defines the 
+function. **We say that variables `v1`, `v2` and `result` have function scope** as they can only be seen 
+inside the function.
+
+
+### Code is checked at runtime
+
+Python does very little checking at compile time, deferring almost all
+type, name, etc. checks on each line until that line runs.
+
+```python
+if name == 'Guido':
+    print(repeeeet(name) + '!!!')
+else:
+    print(repeat(name, False))
+```
+
+The if-statement contains an obvious error, where the `repeat()` function
+is accidentally typed in as `repeeeet()`. The funny thing in Python ...
+this code compiles and runs fine so long as the name at runtime is not
+'Guido'. Only when a run actually tries to execute the `repeeeet()` will
+it notice that there is no such function and raise an error. This just
+means that when you first run a Python program, some of the first errors
+you see will be simple typos like this. This is one area where languages
+with a more verbose type system, like Java, have an advantage ... they
+can catch such errors at compile time (but of course you have to
+maintain all that type information... it's a trade-off).
+
+## Modules and their Namespaces
+
+Modules are prebuilt collections of useful methods and variables that can be used by another program. They 
+either come with python, or can be downloaded and added to your installation using tools like `pip`. Since 
+python would be much too big if it included all possible functions that people might need on a few functions 
+are defined by default (remember that python can run on very small machines). This allows a programmer to 
+`import` just the modules that their program needs.
+
+For example with the statement `import sys` you can import and access the definitions
+in the `sys` module and make them available by their fully-qualified
+name, e.g. `sys.exit()`. `sys` is also known as a "namespace" which is
+how Python implements scope in modules. Namespaces
+prevent conflicts between classes, methods and objects with the same
+name that might have been written by different people.
+
+```python
+import sys
+
+# Now can refer to sys.xxx facilities
+sys.version
+
+```
+
+There is another import form that looks like this: `from sys import
+version`. That makes version available as `version` without the module prefix;
+however, we recommend the original form with the fully-qualified names
+because it's a lot easier to determine where a function or attribute
+came from.
+
+There are many modules and packages which are bundled with a standard
+installation of the Python interpreter, so you don't have to do anything
+extra to use them. These are collectively known as the "Python Standard
+Library." Commonly used modules/packages include:
+
+-   `sys` — access to `version`, `exit()`, `argv`, `stdin`, `stdout`, ...
+-   `re` — regular expressions
+-   `os` — operating system interface, file system
+
+You can find the documentation of all the Standard Library modules and
+packages at <https://docs.python.org/3.6/library/>.
+
+Online help, help(), and dir()
+----------------------------------
+
+There are a variety of ways to get help for Python.
+
+-   Do a Google search, starting with the word "python", like "python
+    list" or "python string lowercase". The first hit is often
+    the answer. This technique seems to work better for Python than it
+    does for other languages for some reason.
+-   The official Python docs site —
+    [docs.python.org](http://docs.python.org) — has high quality docs.
+    Nonetheless, I often find a Google search of a couple words to
+    be quicker.
+-   There is also an [official Tutor mailing
+    list](http://mail.python.org/mailman/listinfo/tutor) specifically
+    designed for those who are new to Python and/or programming!
+-   Many questions (and answers) can be found on
+    [StackOverflow](http://stackoverflow.com/questions/tagged/python), 
+    [GIS Stackexchange](https://gis.stackexchange.com/questions/tagged/python)
+    and [Quora](http://quora.com/Python-programming-language).
+-   Use the help() and dir() functions (see below).
+
+Inside the Python interpreter, the help() function pulls up
+documentation strings for various modules, functions, and methods. These
+doc strings are similar to Java's javadoc. The dir() function tells you
+what the attributes of an object are. Below are some ways to call help()
+and dir() from the interpreter:
+
+-   `help(len)` — help string for the built-in `len()` function; note
+    that it's "len" not "len()", which is a **call** to the function,
+    which we don't want
+-   `help(sys)` — help string for the `sys` module (must do an
+    `import sys` first)
+-   `dir(sys)` — `dir()` is like `help()` but just gives a quick list of
+    its defined symbols, or "attributes"
+-   `help(sys.exit)` — help string for the `exit()` function in the
+    `sys` module
+-   `help('xyz'.split)` — help string for the `split()` method for
+    string objects. You can call `help()` with that object itself or an
+    **example** of that object, plus its attribute. For example, calling
+    `help('xyz'.split)` is the same as calling `help(str.split)`.
+-   `help(list)` — help string for `list` objects
+-   `dir(list)` — displays `list` object attributes, including its
+    methods
+-   `help(list.append)` — help string for the `append()` method for
+    `list` objects
 
 Exercise: string1.py
 --------------------
